@@ -1,24 +1,36 @@
-# README
+# <BD.Fashion>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
 
-Things you may want to cover:
+### サイトテーマ
 
-* Ruby version
+<一週間分の天気のデータを外部からデータ取得やユーザーごとの服の登録データを参照を用いて、ファッション選択の判断ミスをなくす。（ユーザー個々の服に対するレビューサイト）>
 
-* System dependencies
+### テーマを選んだ理由
 
-* Configuration
+<体感温度の低い日に薄手の服で外出してしまったり、逆に体感温度の高い日に厚手の服を着て失敗した経験から選定しました。>
 
-* Database creation
+### ターゲットユーザ
 
-* Database initialization
+<外出時に服装の選択を失敗したことがある方々>
 
-* How to run the test suite
+### 主な利用シーン
 
-* Services (job queues, cache servers, search engines, etc.)
+<外出前の所持している服からの組み合わせをタンスから探し出して考えたくないとき、もしくは外出予定日に最適な服装を準備をするのに利用する。>
 
-* Deployment instructions
+## 設計書
 
-* ...
+<...>
+
+## 開発環境
+
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JS ライブラリ：jQuery
+- IDE：Cloud9
+
+## 使用素材
+
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名と URL を明記してください。
+- 使用しない場合は、使用素材の項目を README から削除してください。
