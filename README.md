@@ -1,24 +1,53 @@
-# README
+# BD.Fashion
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
 
-Things you may want to cover:
+### サイトテーマ
 
-* Ruby version
+一週間分の天気のデータを外部からデータ取得やユーザーごとの服の登録データを参照を用いて、ファッション選択の判断ミスおよびコーディネートを考える時間をなくすためのユーザー個々の服に対するレビューサイト
 
-* System dependencies
+### テーマを選んだ理由
 
-* Configuration
+天気と所持している服を関連付けし、1日をより快適に過ごせるようなサイトってそういえばないな・・・っていう関心から、APIを用いて天気の情報と所持している洋服を登録しておくだけで、その日に着るべき服を提案できると便利だと思い、天候情報と所持している服を関連付けできるサイトを作成してみることにしました。
+「体感温度の低い日に薄手の服で外出してしまったり、逆に体感温度の高い日に厚手の服を着て外出先で失敗した経験のある方」や「外出前の貴重な準備の時間に洋服選びに大きく時間を割いてしまった経験がある方」は多いのではないでしょうか。
+このサイトを用いれば、外出先で服装の選択ミスを減らすことや外出前の貴重な時間を洋服を選ぶ時間から他の身だしなみや持ち物確認などに活用することができ、「外出先で失敗するリスクを減らしたい方」や「より有益に時間を使いたい方」のニーズに応えることができます。
 
-* Database creation
+### ターゲットユーザ
 
-* Database initialization
+外出時に服装の選択の失敗を減らしたい方</br>
 
-* How to run the test suite
+外出前に頭を使いたくないが、身だしなみは気にしたい方</br>
 
-* Services (job queues, cache servers, search engines, etc.)
+タンスの中の服を管理しきれていない方</br>
 
-* Deployment instructions
+洋服の購入で、サイズを間違えて購入してしまったり、同じような服を購入してしまったことがある方</br>
 
-* ...
+### 主な利用シーン
+
+「この組み合わせでいこう！」と着替えて外に出てみたものの室内と外気の違いに驚き、「失敗した、でも、時間がないから諦めてこれで行こう・・・」と不快な一日を過ごす可能性を減らしたいとき</br>
+
+外出前の所持している服の組み合わせを考える時間がないとき</br>
+
+コーディネートを鏡の前に立つことなく、客観的に判断したいとき</br>
+
+所持している服をサイト上に登録して管理したいとき</br>
+（画像の登録や夏服、冬服でジャンル分けが可能）
+
+## 設計書
+
+
+## 実装機能リスト
+
+https://docs.google.com/spreadsheets/d/13cl9gZd6Ztc3pngOSVnWlZl47tmEv1cXINse_IqSNLo/edit?usp=sharing
+
+## 開発環境
+
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JS ライブラリ：jQuery
+- IDE：Cloud9
+
+## 使用素材
+
+使用検討中
