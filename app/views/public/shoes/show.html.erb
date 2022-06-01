@@ -1,26 +1,23 @@
 <div class="container my-5">
   <div class="row  my-5">
     <h4 class="col-auto offset-2 font-weight-bold">
-      ボトム詳細
+      シューズ詳細
     </h4>
   </div>
   <div class="row my-5 justify-content-center">
     <div class="col-4 offset-2">
-      <%= image_tag @bottom.bottomImage, size: "300x300" %>
+      <%= image_tag @shoe.shoeImage, size: "300x300" %>
     </div>
     <div class="col-4 mt-4">
       <ul class="list-unstyled">
-        <li class="my-3 font-weight-bold">品名：<%= @bottom.name %></li>
-        <li class="my-3">サイズ：<%= @bottom.size %></li>
-        <li class="my-3">ウエスト：<%= @bottom.waist %></li>
-        <li class="my-3">最適（高）：<%= @bottom.maxtemperature %>℃</li>
-        <li class="my-3">最適（低）：<%= @bottom.mixtemperature %>℃</li>
+        <li class="my-3 font-weight-bold">品名：<%= @shoe.name %></li>
+        <li class="my-3">サイズ：<%= @shoe.size %>cm</li>
       </ul>
     </div>
   </div>
   <div class="row">
     <div class="field mx-auto my-5">
-      <%= link_to "編集する", edit_bottom_path(@bottom.id), class:"btn btn-success" %>
+      <%= link_to "編集する", edit_shoe_path(@shoe.id), class:"btn btn-success" %>
     </div>
   </div>
 </div>

@@ -1,17 +1,17 @@
 <div class="container my-5">
   <div class="row">
     <div class="col-md-auto mb-3 bg-light">
-      <h4>ボトム新規登録</h4>
+      <h4>インナー新規登録</h4>
     </div>
   </div>
   <div class="col-md-10 offset-md-2">
-  <%= form_with model: @bottom, url: bottoms_path do |f| %>
+  <%= form_with model: @inner, url: inners_path do |f| %>
     <div class="field row mx-auto">
       <div class="col-md-2 col-form-label">
-        <label for="item_name">ボトム画像</label>
+        <label for="item_name">インナー画像</label>
       </div>
       <div class="form-group col-md-8 my-1">
-        <%= f.file_field :bottomImage, accept: "image/*" %>
+        <%= f.file_field :innerImage, accept: "image/*" %>
       </div>
     </div>
     <div class="field row mx-auto">
@@ -27,4 +27,3 @@
   </div>
   <% end %>
 </div>
-

@@ -2,15 +2,15 @@
   <div class="row">
     <div class="col-auto offset-2 bg-light">
       <h4 class="font-weight-bold">
-        ボトム編集
+        インナー編集
       </h4>
     </div>
   </div>
-  <%= form_with model: @bottom, url: bottom_path(@bottom.id), method: :patch do |f| %>
+  <%= form_with model: @inner, url: inner_path(@inner.id), method: :patch do |f| %>
     <div class="row justify-content-center">
       <div class="col-4 mt-5 text-center">
-        <% if @bottom.bottomImage.attached? %>
-          <%= image_tag @bottom.bottomImage, size: "200x200" %>
+        <% if @inner.innerImage.attached? %>
+          <%= image_tag @inner.innerImage, size: "200x200" %>
         <% end %>
       </div>
     </div>
@@ -20,7 +20,7 @@
         <tbody>
           <tr>
             <th>画像</th>
-            <td><%= f.file_field :bottomImage, accept: "image/*" %></td>
+            <td><%= f.file_field :innerImage, accept: "image/*" %></td>
           </tr>
           <tr>
             <th>品名</th>

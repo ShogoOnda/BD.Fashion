@@ -1,22 +1,19 @@
 <div class="container my-5">
   <div class="row">
     <h4 class="font-weight-bold">
-      ボトム一覧 (全<%= @bottoms.count %>件)
+      アウター一覧 (全<%= @outers.count %>件)
     </h4>
   </div>
   <div class="row my-3">
-    <% @bottoms.each do |bottom| %>
+    <% @outers.each do |outer| %>
       <div class="col-3 d-flex flex-column bd-highlight mb-3">
-        <%= link_to bottom_path(bottom.id) do %>
+        <%= link_to outer_path(outer.id) do %>
           <div class="p-2 bd-highlight">
-            <%= image_tag bottom.bottomImage, size: "200x200" %>
+            <%= image_tag outer.outerImage, size: "200x200" %>
           </div>
         <% end %>
         <div class="p-2 bd-highlight">
-          <%= bottom.name %>
-        </div>
-        <div class="p-2 bd-highlight">
-          <%= bottom.name %>
+          <%= outer.name %>
         </div>
       </div>
     <% end %>
