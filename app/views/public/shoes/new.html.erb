@@ -1,0 +1,36 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-auto mb-3 bg-light">
+      <h4>シューズ新規登録</h4>
+    </div>
+  </div>
+  <div class="col-md-10 offset-md-2">
+  <%= form_with model: @shoe, url: shoes_path do |f| %>
+    <div class="field row mx-auto">
+      <div class="col-md-2 col-form-label">
+        <label for="item_name">シューズ画像</label>
+      </div>
+      <div class="form-group col-md-8 my-1">
+        <%= f.file_field :shoeImage, accept: "image/*" %>
+      </div>
+    </div>
+    <div class="field row mx-auto">
+      <div class="col-md-2 col-form-label">
+        <label for="item_name">品名</label>
+      </div>
+      <div class="form-group col-md-8">
+        <%= f.text_field :name, class: "form-control w60" %>
+      </div>
+      <div class="col-md-2 col-form-label">
+        <label for="item_name">サイズ</label>
+      </div>
+      <div class="form-group col-md-8">
+        <%= f.text_field :size, class: "form-control w60" %>cm
+      </div>
+    </div>
+  <div class="form-group col-md-8 offset-md-2 mt-2">
+   <%= f.submit '登録', class: "btn btn-success" %>
+  </div>
+  <% end %>
+</div>
+

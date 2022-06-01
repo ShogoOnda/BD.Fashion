@@ -1,16 +1,120 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BDFashion</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>BD.Fashion</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <div class="navbar-brand">
+            <%= link_to "BD.Fashion", root_path %>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="navbar-collapse collapse show" id="navbarNavDropdown" style>
+            <ul class="navbar-nav ml-auto">
+
+
+              <% if user_signed_in? %>
+
+              <li class="nav-item btn btn-light">
+                <%= link_to outers_path do %>
+                マイページ
+                <% end %>
+              </li>
+
+              <li class="nav-item btn btn-light">
+                <%= link_to outers_path do %>
+                みんなのFashion
+                <% end %>
+              </li>
+
+              <li class="nav-item btn btn-light">
+                <%= link_to outers_path do %>
+                Item
+                <% end %>
+              </li>
+
+              <li class="nav-item btn btn-light">
+                <%= link_to destroy_user_session_path, method: :delete do %>
+                ログアウト
+                <% end %>
+              </li>
+
+              <% elsif admin_signed_in? %>
+              <li class="nav-item btn btn-light">
+                <%= link_to admin_items_path do %>
+                みんなのFashion
+                <% end %>
+              </li>
+
+              <li class="nav-item btn btn-light">
+                <%= link_to admin_customers_path do %>
+                ユーザー一覧
+                <% end %>
+              </li>
+
+              <li class="nav-item btn btn-light">
+                <%= link_to admin_root_path do %>
+                注文履歴一覧
+                <% end %>
+              </li>
+
+              <li class="nav-item btn btn-light">
+                <%= link_to destroy_admin_session_path, method: :delete do %>
+                ログアウト
+                <% end %>
+              </li>
+
+              <% else %>
+
+              <li class="nav-item btn btn-light">
+                <%= link_to about_path do %>
+                About
+                <% end %>
+              </li>
+
+              <li class="nav-item btn btn-light">
+                <%= link_to outers_path do %>
+                みんなのFashion
+                <% end %>
+              </li>
+
+              <li class="nav-item btn btn-light">
+                <%= link_to new_user_registration_path do %>
+                新規登録
+                <% end %>
+              </li>
+
+              <li class="nav-item btn btn-light">
+                <%= link_to user_session_path do %>
+                ログイン
+                <% end %>
+              </li>
+              <% end %>
+
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="mx-auto">
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

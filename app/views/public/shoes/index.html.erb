@@ -1,0 +1,21 @@
+<div class="container my-5">
+  <div class="row">
+    <h4 class="font-weight-bold">
+      シューズ一覧 (全<%= @shoes.count %>件)
+    </h4>
+  </div>
+  <div class="row my-3">
+    <% @shoes.each do |shoe| %>
+      <div class="col-3 d-flex flex-column bd-highlight mb-3">
+        <%= link_to shoe_path(shoe.id) do %>
+          <div class="p-2 bd-highlight">
+            <%= image_tag shoe.shoeImage, size: "200x200" %>
+          </div>
+        <% end %>
+        <div class="p-2 bd-highlight">
+          <%= shoe.size %>cm
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
