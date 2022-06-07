@@ -11,15 +11,19 @@
     <div class="col-4 mt-4">
       <ul class="list-unstyled">
         <li class="my-3 font-weight-bold">品名：<%= @inner.name %></li>
+        <li class="my-3">ブランド：<%= @inner.brand %></li>
         <li class="my-3">サイズ：<%= @inner.size %></li>
-        <li class="my-3">最適（高）：<%= @inner.maxtemperature %>℃</li>
-        <li class="my-3">最適（低）：<%= @inner.mixtemperature %>℃</li>
+
+        <li class="my-3">レビュー：<%= @inner.review %>℃</li>
       </ul>
     </div>
   </div>
   <div class="row">
     <div class="field mx-auto my-5">
       <%= link_to "編集する", edit_inner_path(@inner.id), class:"btn btn-success" %>
+    </div>
+    <div class="field mx-auto my-5">
+      <%=link_to "削除する", inner_path(@inner.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn btn-danger" %>
     </div>
   </div>
 </div>

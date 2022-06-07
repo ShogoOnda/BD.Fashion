@@ -1,16 +1,14 @@
 class CreateOuters < ActiveRecord::Migration[6.1]
   def change
     create_table :outers do |t|
-      
+
       t.string :name
       t.string :size
       t.integer :color
-      t.integer :shoulder
-      t.integer :width
-      t.integer :length
-      t.integer :sleeve
-      t.integer :maxtemperature
-      t.integer :mixtemperature
+      t.string :brand
+      t.text :review
+      t.integer :status
+      t.integer :user_id
 
       t.timestamps
     end

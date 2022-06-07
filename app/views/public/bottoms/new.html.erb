@@ -6,6 +6,18 @@
   </div>
   <div class="col-md-10 offset-md-2">
   <%= form_with model: @bottom, url: bottoms_path do |f| %>
+  <div class="check_box">
+    <span>タグ</span>
+    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+      <div>
+        <%= tag.label do %>
+          <%= tag.check_box %>
+          <%= tag.text %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
     <div class="field row mx-auto">
       <div class="col-md-2 col-form-label">
         <label for="item_name">ボトム画像</label>
@@ -22,9 +34,36 @@
         <%= f.text_field :name, class: "form-control w60" %>
       </div>
     </div>
-  <div class="form-group col-md-8 offset-md-2 mt-2">
+    <div class="field row mx-auto">
+      <div class="col-md-2 col-form-label">
+        <label for="item_name">ブランド</label>
+      </div>
+      <div class="form-group col-md-8">
+        <%= f.text_field :brand, class: "form-control w60" %>
+      </div>
+    </div>
+    <div class="field row mx-auto">
+      <div class="col-md-2 col-form-label">
+        <label for="item_name">サイズ</label>
+      </div>
+      <div class="form-group col-md-8">
+        <%= f.text_field :size, class: "form-control w60" %>
+      </div>
+    </div>
+    <div class="field row mx-auto">
+      <div class="col-md-2 col-form-label">
+        <label for="item_name">レビュー</label>
+      </div>
+      <div class="form-group col-md-8">
+        <%= f.text_area :review, class: "form-control" %>
+      </div>
+    </div>
+  <div class="form-group col-2 offset-3 mt-2">
    <%= f.submit '登録', class: "btn btn-success" %>
   </div>
   <% end %>
+
+
+
 </div>
 

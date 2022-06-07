@@ -1,0 +1,30 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-auto mb-3 bg-light">
+      <h4>レビュー一覧</h4>
+    </div>
+  </div>
+
+  <table class="table table-hover table-inverse">
+    <thead>
+      <tr>
+        <th>会員ID</th>
+        <th>アイテム画像</th>
+        <th>レビュー</th>
+      </tr>
+    </thead>
+      <tbody>
+        <tr>
+        <% @shoes.each do |shoe| %>
+          <td><%= shoe.user_id %></td>
+          <td>
+            <%= link_to shoe_path(shoe.id) do %>
+              <%= image_tag shoe.shoeImage, size: "100x100" %>
+            <% end %>
+          </td>
+          <td><%= shoe.review %></td>
+        <% end %>
+        </tr>
+      </tbody>
+  </table>
+</div>

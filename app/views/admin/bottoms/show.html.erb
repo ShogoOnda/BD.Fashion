@@ -1,0 +1,30 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-auto bg-light">
+      <h4>BottomReview詳細</h4>
+    </div>
+  </div>
+  <div class="row my-3">
+    <table class="table table-borderless">
+      <tbody>
+        <tr>
+          <th>会員ID</th>
+          <td><%= @bottom.user_id %></td>
+        </tr>
+        <tr>
+          <th>アイテム画像</th>
+          <td><%= image_tag @bottom.bottomImage, size: "300x300" %></td>
+        </tr>
+        <tr>
+          <th>レビュー</th>
+          <td><%= @bottom.review %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row my-2">
+    <div class="field mx-auto my-5">
+      <%=link_to "削除する", admin_bottom_path(@bottom.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn btn-danger" %>
+    </div>
+  </div>
+</div>

@@ -1,8 +1,11 @@
 <div class="container my-5">
   <div class="row">
-    <h4 class="font-weight-bold">
+    <h4 class="col-5 font-weight-bold">
       インナー一覧 (全<%= @inners.count %>件)
     </h4>
+    <div class="col-3 offset-3 text-right">
+      <%=link_to "アウター登録", new_outer_path, class: "btn btn-sm btn-success" %>
+    </div>
   </div>
   <div class="row my-3">
     <% @inners.each do |inner| %>

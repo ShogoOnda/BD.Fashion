@@ -22,6 +22,38 @@
         <%= f.text_field :name, class: "form-control w60" %>
       </div>
     </div>
+    <div class="field row mx-auto">
+      <div class="col-md-2 col-form-label">
+        <label for="item_name">ブランド</label>
+      </div>
+      <div class="form-group col-md-8">
+        <%= f.text_field :brand, class: "form-control w60" %>
+      </div>
+    </div>
+    <div class="field row mx-auto">
+      <div class="col-md-2 col-form-label">
+        <label for="item_name">サイズ</label>
+      </div>
+      <div class="form-group col-md-8">
+        <%= f.text_field :size, class: "form-control w60" %>
+      </div>
+    </div>
+    <div class="field row mx-auto">
+      <div class="col-2 col-form-label">
+        <label for="item_name">シーズン</label>
+      </div>
+      <div class="form-group col-4 mt-2">
+        <%= f.select :season, {"All": 0, "春": 1, "夏": 2, "秋": 1, "冬": 2},{ include_blank: '選択してください'}, { class: 'form-select form-select-lg mb-3' , required: true } %>
+      </div>
+    </div>
+    <div class="field row mx-auto">
+      <div class="col-md-2 col-form-label">
+        <label for="item_name">レビュー</label>
+      </div>
+      <div class="form-group col-md-8">
+        <%= f.text_area :review, class: "form-control" %>
+      </div>
+    </div>
   <div class="form-group col-md-8 offset-md-2 mt-2">
    <%= f.submit '登録', class: "btn btn-success" %>
   </div>

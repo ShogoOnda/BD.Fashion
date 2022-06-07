@@ -11,15 +11,20 @@
     <div class="col-4 mt-4">
       <ul class="list-unstyled">
         <li class="my-3 font-weight-bold">品名：<%= @outer.name %></li>
+        <li class="my-3">ブランド：<%= @outer.brand %></li>
         <li class="my-3">サイズ：<%= @outer.size %></li>
-        <li class="my-3">最適（高）：<%= @outer.maxtemperature %>℃</li>
-        <li class="my-3">最適（低）：<%= @outer.mixtemperature %>℃</li>
+        <li class="my-3">レビュー：<%= @outer.review %>℃</li>
       </ul>
     </div>
   </div>
   <div class="row">
-    <div class="field mx-auto my-5">
+    <% if @outer.user.id == current_user.id %>
+    <div class="col-3 offset-4 my-5">
       <%= link_to "編集する", edit_outer_path(@outer.id), class:"btn btn-success" %>
     </div>
+    <div class="col-3 my-5">
+      <%=link_to "削除する", outer_path(@outer.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn btn-danger" %>
+    </div>
+    <% end %>
   </div>
 </div>
