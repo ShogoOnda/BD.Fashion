@@ -5,8 +5,7 @@ class Public::InnersController < ApplicationController
   end
 
   def index
-    @inner = Inner.new
-    @inners = Inner.all
+    @inners = params[:tag_id].present? ? Tag.find(params[:tag_id]).inners : Inner.all
     @user = current_user
   end
 

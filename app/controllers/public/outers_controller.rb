@@ -5,8 +5,7 @@ class Public::OutersController < ApplicationController
   end
 
   def index
-    @outer = Outer.new
-    @outers = Outer.all
+    @outers = params[:tag_id].present? ? Tag.find(params[:tag_id]).outers : Outer.all
     @user = current_user
   end
 

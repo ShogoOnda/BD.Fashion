@@ -6,8 +6,7 @@ class Public::BottomsController < ApplicationController
 
 
   def index
-    @bottom = Bottom.new
-    @bottoms = Bottom.all
+    @bottoms = params[:tag_id].present? ? Tag.find(params[:tag_id]).bottoms : Bottom.all
     @user = current_user
   end
 

@@ -3,7 +3,19 @@
     <h4 class="col-5 font-weight-bold">
       シューズ一覧 (全<%= @shoes.count %>件)
     </h4>
-    <div class="col-3 offset-3 text-right">
+    <div class="col-4 mt-1">
+      <%= form_tag shoes_path, method: :get, class: 'boards__searchForm' do %>
+
+            <%= select_tag :tag_id,
+                           options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                           {
+                             prompt: 'タグで絞り込み検索',
+                             onchange: 'submit(this.form);'
+                           }
+            %>
+      <% end %>
+    </div>
+    <div class="col-2 text-right">
       <%=link_to "シューズ登録", new_shoe_path, class: "btn btn-sm btn-success" %>
     </div>
   </div>

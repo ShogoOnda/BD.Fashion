@@ -3,7 +3,19 @@
     <h4 class="col-5 font-weight-bold">
       ボトム一覧 (全<%= @bottoms.count %>件)
     </h4>
-    <div class="col-3 offset-3 text-right">
+    <div class="col-4 mt-1">
+      <%= form_tag bottoms_path, method: :get, class: 'boards__searchForm' do %>
+
+            <%= select_tag :tag_id,
+                           options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                           {
+                             prompt: 'タグで絞り込み検索',
+                             onchange: 'submit(this.form);'
+                           }
+            %>
+      <% end %>
+    </div>
+    <div class="col-2 text-right">
       <%=link_to "ボトム登録", new_bottom_path, class: "btn btn-sm btn-success" %>
     </div>
   </div>
@@ -11,12 +23,17 @@
     <% @bottoms.each do |bottom| %>
       <div class="col-3 d-flex flex-column bd-highlight mb-3">
         <%= link_to bottom_path(bottom.id) do %>
-          <div class="p-2 bd-highlight">
+          <div class="pt-2 text-center">
             <%= image_tag bottom.bottomImage, size: "200x200" %>
           </div>
         <% end %>
-        <div class="p-2 bd-highlight">
+        <div class="pt-2 text-center">
           <%= bottom.name %>
+        </div>
+        <div class="p-1 text-center">
+          <% bottom.tags.each do |tag| %>
+            <%= tag.name %>
+          <% end %>
         </div>
       </div>
     <% end %>

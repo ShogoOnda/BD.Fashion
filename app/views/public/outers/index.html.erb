@@ -3,7 +3,19 @@
     <h4 class="col-5 font-weight-bold">
       アウター一覧 (全<%= @outers.count %>件)
     </h4>
-    <div class="col-3 offset-3 text-right">
+    <div class="col-4 mt-1">
+      <%= form_tag outers_path, method: :get, class: 'boards__searchForm' do %>
+
+            <%= select_tag :tag_id,
+                           options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                           {
+                             prompt: 'タグで絞り込み検索',
+                             onchange: 'submit(this.form);'
+                           }
+            %>
+      <% end %>
+    </div>
+    <div class="col-2 text-right">
       <%=link_to "アウター登録", new_outer_path, class: "btn btn-sm btn-success" %>
     </div>
   </div>
@@ -11,14 +23,20 @@
     <% @outers.each do |outer| %>
       <div class="col-3 d-flex flex-column bd-highlight mb-3">
         <%= link_to outer_path(outer.id) do %>
-          <div class="p-2 bd-highlight">
+          <div class="pt-2 text-center">
             <%= image_tag outer.outerImage, size: "200x200" %>
           </div>
         <% end %>
-        <div class="p-2 bd-highlight">
+        <div class="pt-2 text-center">
           <%= outer.name %>
+        </div>
+        <div class="p-1 text-center">
+          <% outer.tags.each do |tag| %>
+            <%= tag.name %>
+          <% end %>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+

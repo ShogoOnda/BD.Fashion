@@ -5,8 +5,7 @@ class Public::ShoesController < ApplicationController
   end
 
   def index
-    @shoe = Shoe.new
-    @shoes = Shoe.all
+    @shoes = params[:tag_id].present? ? Tag.find(params[:tag_id]).shoes : Shoe.all
     @user = current_user
   end
 
