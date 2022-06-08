@@ -4,8 +4,21 @@
       <h4>インナー新規登録</h4>
     </div>
   </div>
-  <div class="col-md-10 offset-md-2">
-  <%= form_with model: @inner, url: inners_path do |f| %>
+  <%= form_with model: @inner, url: bottoms_path do |f| %>
+    <div class="row">
+      <div class="col-auto ml-3 my-3">
+        <span>シーズン</span>
+        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+          <%= tag.label do %>
+            <div class="col-auto">
+              <%= tag.check_box %>
+              <%= tag.text %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
     <div class="field row mx-auto">
       <div class="col-md-2 col-form-label">
         <label for="item_name">インナー画像</label>

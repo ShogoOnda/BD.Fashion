@@ -10,10 +10,15 @@
     </div>
     <div class="col-4 mt-4">
       <ul class="list-unstyled">
+        <li class="my-3">
+          <% @bottom.tags.each do |tag| %>
+              <%= tag.name %>
+          <% end %>
+        </li>
         <li class="my-3 font-weight-bold">品名：<%= @bottom.name %></li>
         <li class="my-3">ブランド：<%= @bottom.brand %></li>
         <li class="my-3">サイズ：<%= @bottom.size %></li>
-        <li class="my-3">レビュー：<%= @bottom.review %>℃</li>
+        <li class="my-3">レビュー：<%= @bottom.review %></li>
       </ul>
     </div>
   </div>

@@ -11,7 +11,6 @@ Admin.create!(
 )
 
 Tag.create([
-    { name: 'All' },
     { name: '春' },
     { name: '夏'},
     { name: '秋'},

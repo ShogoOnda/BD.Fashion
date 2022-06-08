@@ -1,5 +1,10 @@
 class Public::BottomsController < ApplicationController
 
+  def new
+    @bottom = Bottom.new
+  end
+
+
   def index
     @bottom = Bottom.new
     @bottoms = Bottom.all
@@ -9,7 +14,8 @@ class Public::BottomsController < ApplicationController
   def create
     @bottom = Bottom.new(bottom_params)
     @bottom.user_id = current_user.id
-    if @bottom.save
+
+    if @bottom.save!
       redirect_to bottom_path(@bottom.id), notice: 'You have created book successfully.'
     else
       @bottoms = Bottom.all
@@ -50,7 +56,7 @@ class Public::BottomsController < ApplicationController
 
   private
   def bottom_params
-    params.permit(:bottomImage, :name, :size, :color, :brand, :review, :status, tag_ids: [])
+    params.require(:bottom).permit(:bottomImage, :name, :size, :color, :brand, :review, :status, tag_ids: [])
   end
 
 end

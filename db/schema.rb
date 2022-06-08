@@ -110,11 +110,17 @@ ActiveRecord::Schema.define(version: 2022_06_06_125658) do
   end
 
   create_table "post_tags", force: :cascade do |t|
-    t.integer "post_id", null: false
+    t.integer "outer_id"
+    t.integer "inner_id"
+    t.integer "bottom_id"
+    t.integer "shoe_id"
     t.integer "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_post_tags_on_post_id"
+    t.index ["bottom_id"], name: "index_post_tags_on_bottom_id"
+    t.index ["inner_id"], name: "index_post_tags_on_inner_id"
+    t.index ["outer_id"], name: "index_post_tags_on_outer_id"
+    t.index ["shoe_id"], name: "index_post_tags_on_shoe_id"
     t.index ["tag_id"], name: "index_post_tags_on_tag_id"
   end
 
@@ -158,6 +164,9 @@ ActiveRecord::Schema.define(version: 2022_06_06_125658) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "post_tags", "posts"
+  add_foreign_key "post_tags", "bottoms"
+  add_foreign_key "post_tags", "inners"
+  add_foreign_key "post_tags", "outers"
+  add_foreign_key "post_tags", "shoes"
   add_foreign_key "post_tags", "tags"
 end
