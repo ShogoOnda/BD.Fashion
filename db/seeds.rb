@@ -9,11 +9,3 @@ Admin.create!(
   email: "duo0116@gmail.com",
   password: "admin0116"
 )
-
-Tag.create([
-    { name: 'All' },
-    { name: '春' },
-    { name: '夏'},
-    { name: '秋'},
-    { name: '冬'},
-    ])

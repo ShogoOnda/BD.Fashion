@@ -13,37 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
-@import "skippr";
-
-.block {
-  width: 500px;
-  height: 500px;
-}
-
-#containers{
-  width: 500px;
-  height: 500px;
-}
-
-.outerimage {
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.innerimage {
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.bottomimage {
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-.shoeimage {
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-

@@ -4,10 +4,8 @@ class CreateShoes < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :size
       t.integer :color
-      t.string :brand
-      t.text :review
-      t.integer:status
-      t.integer :user_id
+      t.integer :maxtemperature
+      t.integer :mixtemperature
 
       t.timestamps
     end

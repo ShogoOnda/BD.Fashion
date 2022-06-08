@@ -4,10 +4,11 @@ class CreateBottoms < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :size
       t.integer :color
-      t.string :brand
-      t.text :review
-      t.integer:status
-      t.integer :user_id
+      t.integer :waist
+      t.integer :hip
+      t.integer :inseam
+      t.integer :maxtemperature
+      t.integer :mixtemperature
 
       t.timestamps
     end
