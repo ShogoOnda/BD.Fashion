@@ -1,5 +1,9 @@
 class Public::InnersController < ApplicationController
 
+  def new
+    @inner = Inner.new
+  end
+
   def index
     @inner = Inner.new
     @inners = Inner.all
@@ -9,7 +13,8 @@ class Public::InnersController < ApplicationController
   def create
     @inner = Inner.new(inner_params)
     @inner.user_id = current_user.id
-    if @inner.save
+
+    if @inner.save!
       redirect_to inner_path(@inner.id), notice: 'You have created book successfully.'
     else
       @inners = Inner.all
@@ -50,7 +55,7 @@ class Public::InnersController < ApplicationController
 
   private
   def inner_params
-    params.permit(:innerImage, :name, :size, :color, :brand, :review, :status, tag_ids: [])
+    params.require(:inner).permit(:innerImage, :name, :size, :color, :brand, :review, :status, tag_ids: [])
   end
 
 end

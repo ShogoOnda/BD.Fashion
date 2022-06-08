@@ -13,7 +13,8 @@ class Public::ShoesController < ApplicationController
   def create
     @shoe = Shoe.new(shoe_params)
     @shoe.user_id = current_user.id
-    if @shoe.save
+
+    if @shoe.save!
       redirect_to shoe_path(@shoe.id), notice: 'You have created book successfully.'
     else
       @shoes = Shoe.all

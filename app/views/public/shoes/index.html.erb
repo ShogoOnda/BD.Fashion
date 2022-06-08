@@ -4,7 +4,7 @@
       シューズ一覧 (全<%= @shoes.count %>件)
     </h4>
     <div class="col-3 offset-3 text-right">
-      <%=link_to "アウター登録", new_outer_path, class: "btn btn-sm btn-success" %>
+      <%=link_to "シューズ登録", new_shoe_path, class: "btn btn-sm btn-success" %>
     </div>
   </div>
   <div class="row my-3">
@@ -16,7 +16,7 @@
           </div>
         <% end %>
         <div class="p-2 bd-highlight">
-          <%= shoe.size %>cm
+          <%= shoe.name %>
         </div>
       </div>
     <% end %>

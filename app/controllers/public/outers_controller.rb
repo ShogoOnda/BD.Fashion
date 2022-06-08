@@ -1,5 +1,9 @@
 class Public::OutersController < ApplicationController
 
+  def new
+    @outer = Outer.new
+  end
+
   def index
     @outer = Outer.new
     @outers = Outer.all
@@ -9,7 +13,8 @@ class Public::OutersController < ApplicationController
   def create
     @outer = Outer.new(outer_params)
     @outer.user_id = current_user.id
-    if @outer.save
+
+    if @outer.save!
       redirect_to outer_path(@outer.id), notice: 'You have created book successfully.'
     else
       @outers = Outer.all
@@ -50,7 +55,7 @@ class Public::OutersController < ApplicationController
 
   private
   def outer_params
-    params.permit(:outerImage, :name, :size, :color, :brand, :review, :status, tag_ids: [])
+    params.require(:outer).permit(:outerImage, :name, :size, :color, :brand, :review, :status, tag_ids: [])
   end
 
 end

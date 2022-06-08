@@ -4,7 +4,7 @@
       インナー一覧 (全<%= @inners.count %>件)
     </h4>
     <div class="col-3 offset-3 text-right">
-      <%=link_to "アウター登録", new_outer_path, class: "btn btn-sm btn-success" %>
+      <%=link_to "インナー登録", new_inner_path, class: "btn btn-sm btn-success" %>
     </div>
   </div>
   <div class="row my-3">
@@ -18,8 +18,6 @@
         <div class="p-2 bd-highlight">
           <%= inner.name %>
         </div>
-        <div class="p-2 bd-highlight">
-          <%= inner.name %>
         </div>
       </div>
     <% end %>
