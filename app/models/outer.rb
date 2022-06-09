@@ -1,8 +1,6 @@
 class Outer < ApplicationRecord
   has_one_attached :outerImage
   belongs_to :user
-  has_many :post_onedays, dependent: :destroy
-  has_many :onedays, through: :post_onedays
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
 

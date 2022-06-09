@@ -8,6 +8,5 @@ class User < ApplicationRecord
   has_many :outers, dependent: :destroy
   has_many :bottoms, dependent: :destroy
   has_many :shoes, dependent: :destroy
-  has_many :onedays, dependent: :destroy
 
 end

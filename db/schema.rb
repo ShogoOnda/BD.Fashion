@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_09_144834) do
+ActiveRecord::Schema.define(version: 2022_06_06_125658) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -79,12 +79,6 @@ ActiveRecord::Schema.define(version: 2022_06_09_144834) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "genres", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "inners", force: :cascade do |t|
     t.string "name"
     t.string "size"
@@ -93,18 +87,6 @@ ActiveRecord::Schema.define(version: 2022_06_09_144834) do
     t.text "review"
     t.integer "status", default: 0, null: false
     t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "onedays", force: :cascade do |t|
-    t.string "title"
-    t.text "review"
-    t.integer "outer_id"
-    t.integer "inner_id"
-    t.integer "bottom_id"
-    t.integer "shoe_id"
-    t.datetime "start_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -119,21 +101,6 @@ ActiveRecord::Schema.define(version: 2022_06_09_144834) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "post_onedays", force: :cascade do |t|
-    t.integer "outer_id"
-    t.integer "inner_id"
-    t.integer "bottom_id"
-    t.integer "shoe_id"
-    t.integer "oneday_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["bottom_id"], name: "index_post_onedays_on_bottom_id"
-    t.index ["inner_id"], name: "index_post_onedays_on_inner_id"
-    t.index ["oneday_id"], name: "index_post_onedays_on_oneday_id"
-    t.index ["outer_id"], name: "index_post_onedays_on_outer_id"
-    t.index ["shoe_id"], name: "index_post_onedays_on_shoe_id"
   end
 
   create_table "post_tags", force: :cascade do |t|
@@ -191,11 +158,6 @@ ActiveRecord::Schema.define(version: 2022_06_09_144834) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "post_onedays", "bottoms"
-  add_foreign_key "post_onedays", "inners"
-  add_foreign_key "post_onedays", "onedays"
-  add_foreign_key "post_onedays", "outers"
-  add_foreign_key "post_onedays", "shoes"
   add_foreign_key "post_tags", "bottoms"
   add_foreign_key "post_tags", "inners"
   add_foreign_key "post_tags", "outers"
