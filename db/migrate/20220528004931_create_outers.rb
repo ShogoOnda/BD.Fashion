@@ -7,7 +7,7 @@ class CreateOuters < ActiveRecord::Migration[6.1]
       t.integer :color
       t.string :brand
       t.text :review
-      t.integer :status
+      t.integer :status, null: false, default: 0
       t.integer :user_id
 
       t.timestamps

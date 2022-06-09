@@ -19,6 +19,15 @@
       </div>
     </div>
 
+      <%= f.label(:public, for: nil, class:'post-status__label') do %>
+          <%= f.radio_button :status, :public %>
+          <%= I18n.t('activerecord.attributes.post.statuses.public') %>
+      <% end %>
+      <%= f.label(:private, for: nil, class:'post-status__label') do %>
+          <%= f.radio_button :status, :private %>
+          <%= I18n.t('activerecord.attributes.post.statuses.private') %>
+      <% end %>
+
     <div class="field row mx-auto">
       <div class="col-md-2 col-form-label">
         <label for="item_name">ボトム画像</label>

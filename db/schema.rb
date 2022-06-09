@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2022_06_06_125658) do
     t.integer "color"
     t.string "brand"
     t.text "review"
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 2022_06_06_125658) do
     t.integer "color"
     t.string "brand"
     t.text "review"
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 2022_06_06_125658) do
     t.integer "color"
     t.string "brand"
     t.text "review"
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(version: 2022_06_06_125658) do
     t.integer "color"
     t.string "brand"
     t.text "review"
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

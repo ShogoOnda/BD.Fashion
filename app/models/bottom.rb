@@ -22,8 +22,7 @@ class Bottom < ApplicationRecord
       # 新しいタグを保存
       new_tags.each do |new|
          Tag.find_or_create_by(name: new)
-
-     end
+      end
   end
 
 end
