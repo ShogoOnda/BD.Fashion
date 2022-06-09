@@ -1,5 +1,5 @@
 class Public::BottomsController < ApplicationController
-  
+
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -17,21 +17,16 @@ class Public::BottomsController < ApplicationController
     @bottom.user_id = current_user.id
 
     if @bottom.save!
-      #format.html { redirect_to bottom_path(@bottom.id), notice: '新規投稿を行いました。' }
-      redirect_to bottom_path(@bottom.id),　notice: '新規投稿を行いました。' 
-      #format.json { render :show, status: :created, location: @bottom.id }
+      redirect_to bottom_path(@bottom.id),　notice: '新規投稿を行いました。'
     else
-      format.html { render :new }
-      #format.json { render json: @bottom.id.errors, status: :unprocessable_entity }
+      render :new
     end
   end
 
   def show
 
     if @bottom.status_private? && @bottom.user != current_user
-      respond_to do |format|
-        format.html { redirect_to bottoms_path, notice: 'このページにはアクセスできません' }
-      end
+      redirect_to bottoms_path, notice: 'このページにはアクセスできません'
     end
 
     @bottom = Bottom.find(params[:id])

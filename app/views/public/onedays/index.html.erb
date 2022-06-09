@@ -1,11 +1,6 @@
 <div class="container my-5">
   <div class="row justify-content-center">
     <div class="col-md-12 mb-4 text-center">
-      <h2 class="font-weight-bold">サンプルページ</h2>
-    </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-md-12 mb-4 text-center">
       <h3 class="font-weight-bold">出かけ先</h3>
     </div>
   </div>
@@ -52,57 +47,62 @@
     </div>
   </div>
 
-  <div class="row my-5 justify-content-center">
-    <h3 class="col-md-12 mt-4 mb-4 font-weight-bold text-center">
-      MyFashion(Sample)
-    </h3>
-  </div>
 
-  <div class="row">
-    <h5 class="col-md-2 offset-md-3">
-      アウター
-    </h5>
-    <div class="col-md-2">
-      <%= image_tag 'outer.jpg', size: "200x200", class:"outer" %>
-    </div>
-    <div class="col-md-4 offset-1 mt-5">
-      <p>品名：ジャケット</p>
-    </div>
-  </div>
+  <div class="toppage">
+  <h1 class="top">カレンダー</h1>
+  <br>
 
-  <div class="row my-5">
-    <h5 class="col-md-2 offset-md-3">
-      インナー
-    </h5>
-    <div class="col-md-2">
-      <%= image_tag 'inner.jpg', size: "200x200", class:"inner" %>
-    </div>
-    <div class="col-md-4 offset-1 mt-5">
-      <p>品名：シャツ</p>
-    </div>
-  </div>
+    <div class="row">
+      <div class="col-md-4">
+      	<div class="schedule">今後の予定服装一覧</div>
+          <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th>タイトル</th>
+                <th>日程</th>
+              </tr>
+            </thead>
 
-  <div class="row my-5">
-    <h5 class="col-md-2 offset-md-3">
-      パンツ
-    </h5>
-    <div class="col-md-2">
-      <%= image_tag 'pants.jpg', size: "200x200" %>
-    </div>
-    <div class="col-md-4 offset-1 mt-5">
-      <p>品名：ジーパン</p>
-    </div>
-  </div>
+            <tbody>
+              <% @onedays.each do |oneday| %>
+                <tr>
+                  <td><%= link_to oneday.title, oneday %></td>
+                  <td><%= oneday&.start_time&.strftime("%m-%d") %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
 
-  <div class="row my-5">
-    <h5 class="col-md-2 offset-md-3">
-      シューズ
-    </h5>
-    <div class="col-md-2">
-      <%= image_tag 'shoes.jpg', size: "200x200" %>
-    </div>
-    <div class="col-md-4 offset-1 mt-5">
-      <p>品名：革靴</p>
+        <%= form_with(model: @oneday, local: true) do |f| %>
+          <div class="title">
+            <div class="form-tag">タイトル</div>
+            <%= f.text_field :title %>
+          </div>
+          <div class="content">
+            <div class="form-tag">内容</div>
+            <%= f.text_area :review %>
+          </div>
+            <div class="time">
+            <div class="form-tag">時間</div>
+            <%= f.datetime_select :start_time %>
+          </div>
+          <div class="submit">
+            <%= f.submit %>
+          </div>
+        <% end %>
+      </div>
+      <br>
+      <div class="col-md-8">
+        <%= month_calendar events: @onedays do |date, onedays| %>
+          <%= date.day %>
+
+          <% onedays.each do |oneday| %>
+            <div>
+              <%= link_to oneday.title, oneday %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

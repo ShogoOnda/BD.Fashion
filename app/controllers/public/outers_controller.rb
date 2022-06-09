@@ -14,7 +14,7 @@ class Public::OutersController < ApplicationController
     @outer.user_id = current_user.id
 
     if @outer.save!
-      redirect_to outer_path(@outer.id), notice: 'You have created book successfully.'
+      redirect_to outer_path(@outer.id), notice: '登録しました'
     else
       @outers = Outer.all
       @user = @outer.user

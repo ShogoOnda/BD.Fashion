@@ -1,4 +1,4 @@
-class Public::HomesController < ApplicationController
+class Public::OnedaysController < ApplicationController
 
   def index
     @onedays = Oneday.all
@@ -14,7 +14,7 @@ class Public::HomesController < ApplicationController
   end
 
   def create
-    Oneday.create(oneday_parameter)
+    @oneday = Oneday.new(oneday_params)
     redirect_to onedays_path
   end
 
@@ -30,7 +30,7 @@ class Public::HomesController < ApplicationController
 
   def update
     @oneday = Oneday.find(params[:id])
-    if @oneday.update(oneday_parameter)
+    if @oneday.update(oneday_params)
       redirect_to onedays_path, notice: "編集しました"
     else
       render 'edit'
@@ -39,8 +39,7 @@ class Public::HomesController < ApplicationController
 
   private
 
-  def oneday_parameter
-    params.require(:oneday).permit(:title, :outer_id, :inner_id, :bottom_id, :shoe_id, :start_time)
+  def oneday_params
+    params.require(:oneday).permit(:title, :outer_id, :inner_id, :bottom_id, :shoe_id, :review, :start_time)
   end
 end
-

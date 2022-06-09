@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :inners
     resources :bottoms
     resources :shoes
+    resources :onedays
   end
 
   # 管理者用

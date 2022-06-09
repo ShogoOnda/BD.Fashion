@@ -1,0 +1,65 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-md-auto mb-3 bg-light">
+      <h4>アウター新規登録</h4>
+    </div>
+  </div>
+  <%= form_with model: @outer, url: outers_path do |f| %>
+    <div class="row">
+      <div class="col-auto ml-3 my-3">
+        <span>シーズン</span>
+        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+          <%= tag.label do %>
+            <div class="col-auto">
+              <%= tag.check_box %>
+              <%= tag.text %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="field row mx-auto">
+      <div class="col-md-2 col-form-label">
+        <label for="item_name">アウター画像</label>
+      </div>
+      <div class="form-group col-md-8 my-1">
+        <%= f.file_field :outerImage, accept: "image/*" %>
+      </div>
+    </div>
+    <div class="field row mx-auto">
+      <div class="col-md-2 col-form-label">
+        <label for="item_name">品名</label>
+      </div>
+      <div class="form-group col-md-8">
+        <%= f.text_field :name, class: "form-control w60" %>
+      </div>
+    </div>
+    <div class="field row mx-auto">
+      <div class="col-md-2 col-form-label">
+        <label for="item_name">ブランド</label>
+      </div>
+      <div class="form-group col-md-8">
+        <%= f.text_field :brand, class: "form-control w60" %>
+      </div>
+    </div>
+    <div class="field row mx-auto">
+      <div class="col-md-2 col-form-label">
+        <label for="item_name">サイズ</label>
+      </div>
+      <div class="form-group col-md-8">
+        <%= f.text_field :size, class: "form-control w60" %>
+      </div>
+    </div>
+    <div class="field row mx-auto">
+      <div class="col-md-2 col-form-label">
+        <label for="item_name">レビュー</label>
+      </div>
+      <div class="form-group col-md-8">
+        <%= f.text_area :review, class: "form-control" %>
+      </div>
+    </div>
+  <div class="form-group col-md-8 offset-md-2 mt-2">
+   <%= f.submit '登録', class: "btn btn-success" %>
+  </div>
+  <% end %>
+</div>
