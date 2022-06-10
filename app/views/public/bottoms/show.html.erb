@@ -28,7 +28,7 @@
       <%= link_to "編集する", edit_bottom_path(@bottom.id), class:"btn btn-success" %>
     </div>
     <div class="field mx-auto my-5">
-      <%=link_to "Destroy", bottom_path(@bottom.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
+      <%=link_to "削除する", bottom_path(@bottom.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn btn-danger" %>
     </div>
     <% end %>
   </div>

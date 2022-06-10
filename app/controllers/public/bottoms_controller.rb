@@ -8,14 +8,13 @@ class Public::BottomsController < ApplicationController
 
 
   def index
-    @bottoms = params[:tag_id].present? ? Tag.find(params[:tag_id]).bottoms : Bottom.all
     @user = current_user
+    @bottoms = params[:tag_id].present? ? Tag.find(params[:tag_id]).bottoms : Bottom.all
   end
 
   def create
     @bottom = Bottom.new(bottom_params)
     @bottom.user_id = current_user.id
-
     if @bottom.save!
       redirect_to bottom_path(@bottom.id),　notice: '新規投稿を行いました。'
     else

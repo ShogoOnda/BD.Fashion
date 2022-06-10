@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     resources :inners
     resources :bottoms
     resources :shoes
+    resources :items, only: [:index, :show]
+
   end
 
   # 管理者用
