@@ -65,68 +65,160 @@
       所持服一覧
     </h3>
   </div>
-  <div class="row my-5 justify-content-center">
-    <h5 class="col-2">
-      アウター
-    </h5>
-  </div>
-  <div class="row my-5 justify-content-center">
-    <% @outers.each do |outer| %>
-      <div class="col-3 d-flex flex-column bd-highlight mb-3">
-        <%= link_to outer_path(outer.id) do %>
-          <div class="p-2 bd-highlight">
-            <%= image_tag outer.outerImage, size: "200x200" %>
+    <div class="tab-panel">
+    	<!--タブ-->
+      	<ul class="tab-group">
+      		<li class="tab tab-A is-active">アウター</li>
+      		<li class="tab tab-B">インナー</li>
+      		<li class="tab tab-C">ボトム</li>
+      		<li class="tab tab-C">シューズ</li>
+      	</ul>
+
+    	<!--タブを切り替えて表示するコンテンツ-->
+    		  <div class="panel tab-A is-show">
+  <div class="row my-3">
+    <h4 class="col-5 font-weight-bold">
+                アウター
+              </h4>
+              <div class="col-4 mt-1">
+                <%= form_tag outers_path, method: :get, class: 'boards__searchForm' do %>
+
+                      <%= select_tag :tag_id,
+                                     options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                                     {
+                                       prompt: 'タグで絞り込み検索',
+                                       onchange: 'submit(this.form);'
+                                     }
+                      %>
+                <% end %>
+              </div>
+            </div>
+            <div class="row">
+              <% @outers.each do |outer| %>
+                <div class="col-3 d-flex flex-column bd-highlight mb-3">
+                  <%= link_to outer_path(outer.id) do %>
+                    <div class="pt-2 text-center">
+                      <%= image_tag outer.outerImage, size: "200x200" %>
+                    </div>
+                  <% end %>
+                  <div class="pt-2 text-center">
+                    <%= outer.name %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
           </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-  <div class="row my-5 justify-content-center">
-    <h5 class="col-2">
+
+
+
+    		<div class="panel tab-B">
+
+  <div class="row my-3">
+    <h4 class="col-5 font-weight-bold">
       インナー
-    </h5>
+    </h4>
+    <div class="col-4 mt-1">
+      <%= form_tag inners_path, method: :get, class: 'boards__searchForm' do %>
+
+            <%= select_tag :tag_id,
+                           options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                           {
+                             prompt: 'タグで絞り込み検索',
+                             onchange: 'submit(this.form);'
+                           }
+            %>
+      <% end %>
+    </div>
   </div>
-  <div class="row my-5 justify-content-center">
+  <div class="row my-3">
     <% @inners.each do |inner| %>
       <div class="col-3 d-flex flex-column bd-highlight mb-3">
         <%= link_to inner_path(inner.id) do %>
-          <div class="p-2 bd-highlight">
+          <div class="pt-2 text-center">
             <%= image_tag inner.innerImage, size: "200x200" %>
           </div>
         <% end %>
+        <div class="pt-2 text-center">
+          <%= inner.name %>
+        </div>
       </div>
     <% end %>
   </div>
-  <div class="row my-5 justify-content-center">
-    <h5 class="col-2">
+
+
+
+    		</div>
+    		<div class="panel tab-C">
+  <div class="row my-3">
+    <h4 class="col-5 font-weight-bold">
       ボトム
-    </h5>
+    </h4>
+    <div class="col-4 mt-1">
+      <%= form_tag bottoms_path, method: :get, class: 'boards__searchForm' do %>
+
+            <%= select_tag :tag_id,
+                           options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                           {
+                             prompt: 'タグで絞り込み検索',
+                             onchange: 'submit(this.form);'
+                           }
+            %>
+      <% end %>
+    </div>
   </div>
-   <div class="row my-5 justify-content-center">
+  <div class="row my-3">
     <% @bottoms.each do |bottom| %>
-      <div class="col-3 d-flex flex-column bd-highlight mb-3">
+      <div class="col-auto d-flex flex-column bd-highlight mb-3">
         <%= link_to bottom_path(bottom.id) do %>
-          <div class="p-2 bd-highlight">
+          <div class="pt-2 text-center">
             <%= image_tag bottom.bottomImage, size: "200x200" %>
           </div>
         <% end %>
+        <div class="pt-2 text-center">
+          <%= bottom.name %>
+        </div>
       </div>
     <% end %>
   </div>
-  <div class="row my-5 justify-content-center">
-    <h5 class="col-2">
+    		</div>
+    		<div class="panel tab-D">
+  <div class="row my-3">
+    <h4 class="col-5 font-weight-bold">
       シューズ
-    </h5>
+    </h4>
+    <div class="col-4 mt-1">
+      <%= form_tag shoes_path, method: :get, class: 'boards__searchForm' do %>
+
+            <%= select_tag :tag_id,
+                           options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                           {
+                             prompt: 'タグで絞り込み検索',
+                             onchange: 'submit(this.form);'
+                           }
+            %>
+      <% end %>
+    </div>
   </div>
-  <div class="row my-5 justify-content-center">
+  <div class="row my-3">
     <% @shoes.each do |shoe| %>
       <div class="col-3 d-flex flex-column bd-highlight mb-3">
         <%= link_to shoe_path(shoe.id) do %>
-          <div class="p-2 bd-highlight">
+          <div class="pt-2 text-center">
             <%= image_tag shoe.shoeImage, size: "200x200" %>
           </div>
         <% end %>
+        <div class="pt-2 text-center">
+          <%= shoe.name %>
+        </div>
       </div>
     <% end %>
   </div>
+    		</div>
+    	</div>
+    </div>
+
+  </div>
+
+
+
 </div>

@@ -5,7 +5,7 @@ class Public::InnersController < ApplicationController
   end
 
   def index
-    @inners = params[:tag_id].present? ? Tag.find(params[:tag_id]).inners : Inner.all
+    @inners = params[:tag_id].present? ? Tag.find(params[:tag_id]).inners : current_user.inners.all
     @user = current_user
   end
 
@@ -25,6 +25,8 @@ class Public::InnersController < ApplicationController
   def show
     @inner = Inner.find(params[:id])
     @user = @inner.user
+    @comment = Comment.new　#追加
+    @comments = @inner.comments.includes(:user)
   end
 
   def edit

@@ -9,7 +9,7 @@ class Public::BottomsController < ApplicationController
 
   def index
     @user = current_user
-    @bottoms = params[:tag_id].present? ? Tag.find(params[:tag_id]).bottoms : Bottom.all
+    @bottoms = params[:tag_id].present? ? Tag.find(params[:tag_id]).bottoms : current_user.bottoms.all
   end
 
   def create
@@ -30,7 +30,8 @@ class Public::BottomsController < ApplicationController
 
     @bottom = Bottom.find(params[:id])
     @user = @bottom.user
-
+    @comment = Comment.new
+    @comments = @bottom.comments.includes(:user)
   end
 
   def edit

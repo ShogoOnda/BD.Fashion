@@ -5,23 +5,22 @@
     </h4>
   </div>
 
-  <div class="row my-3">
     <div class="tab-panel">
     	<!--タブ-->
-    	<ul class="tab-group">
-    		<li class="tab tab-A is-active">Tab-A</li>
-    		<li class="tab tab-B">Tab-B</li>
-    		<li class="tab tab-C">Tab-C</li>
-    		<li class="tab tab-C">Tab-D</li>
-    	</ul>
+      	<ul class="tab-group">
+      		<li class="tab tab-A is-active">アウター</li>
+      		<li class="tab tab-B">インナー</li>
+      		<li class="tab tab-C">ボトム</li>
+      		<li class="tab tab-C">シューズ</li>
+      	</ul>
 
     	<!--タブを切り替えて表示するコンテンツ-->
-    		  <div class="panel tab-A is-show">
-            <div class="row my-3">
-              <h4 class="col-auto font-weight-bold">
+  <div class="panel tab-A is-show">
+  <div class="row my-3">
+    <h4 class="col-5 font-weight-bold">
                 アウター
               </h4>
-              <div class="col-auto">
+              <div class="col-4 mt-1">
                 <%= form_tag outers_path, method: :get, class: 'boards__searchForm' do %>
 
                       <%= select_tag :tag_id,

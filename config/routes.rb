@@ -12,10 +12,18 @@ Rails.application.routes.draw do
     get "/about"=>"homes#about", as: 'about'
     get "/users/my_page" => "users#show", as: "my_page"
     get "/users/unsubscribe"=>"users#unsubscribe", as: 'unsubscribe'
-    resources :outers
-    resources :inners
-    resources :bottoms
-    resources :shoes
+    resources :outers do
+      resources :comments, only: [:edit, :update, :create, :destroy]
+    end
+    resources :inners do
+      resources :comments, only: [:edit, :update, :create, :destroy]
+    end
+    resources :bottoms do
+      resources :comments, only: [:edit, :update, :create, :destroy]
+    end
+    resources :shoes do
+      resources :comments, only: [:edit, :update, :create, :destroy]
+    end
     resources :items, only: [:index, :show]
 
   end

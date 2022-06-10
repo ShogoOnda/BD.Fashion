@@ -32,4 +32,18 @@
     </div>
     <% end %>
   </div>
+
+
+<h3>コメント一覧</h3>
+<% @comments.each do |c| %>
+  <%= c.body %>
+<% end %>
+
+<% if user_signed_in? %>
+  <%= form_with model: [@bottom, @comment] do |f| %>
+    <%= f.text_area :body, placeholder: "コメントする" %>
+    <%= f.submit "SEND" %>
+  <% end %>
+<% end %>
+
 </div>

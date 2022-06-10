@@ -5,7 +5,7 @@ class Public::OutersController < ApplicationController
   end
 
   def index
-    @outers = params[:tag_id].present? ? Tag.find(params[:tag_id]).outers : Outer.all
+    @outers = params[:tag_id].present? ? Tag.find(params[:tag_id]).outers : current_user.outers.all
     @user = current_user
   end
 
@@ -25,6 +25,8 @@ class Public::OutersController < ApplicationController
   def show
     @outer = Outer.find(params[:id])
     @user = @outer.user
+    @comment = Comment.new　#追加
+    @comments = @outer.comments.includes(:user)
   end
 
   def edit

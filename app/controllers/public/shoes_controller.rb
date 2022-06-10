@@ -5,7 +5,7 @@ class Public::ShoesController < ApplicationController
   end
 
   def index
-    @shoes = params[:tag_id].present? ? Tag.find(params[:tag_id]).shoes : Shoe.all
+    @shoes = params[:tag_id].present? ? Tag.find(params[:tag_id]).shoes : current_user.shoes.all
     @user = current_user
   end
 
@@ -25,6 +25,8 @@ class Public::ShoesController < ApplicationController
   def show
     @shoe = Shoe.find(params[:id])
     @user = @shoe.user
+    @comment = Comment.new　#追加
+    @comments = @shoe.comments.includes(:user)
   end
 
   def edit

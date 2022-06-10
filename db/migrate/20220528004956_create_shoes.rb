@@ -8,7 +8,6 @@ class CreateShoes < ActiveRecord::Migration[6.1]
       t.text :review
       t.integer:status, null: false, default: 0
       t.integer :user_id
-
       t.timestamps
     end
   end
