@@ -25,7 +25,7 @@ class Public::OutersController < ApplicationController
   def show
     @outer = Outer.find(params[:id])
     @user = @outer.user
-    @outercomment = Outercomment.new　#追加
+    @outercomment = Outercomment.new
     @outercomments = @outer.outercomments.includes(:user)
   end
 

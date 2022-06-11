@@ -25,7 +25,7 @@ class Public::ShoesController < ApplicationController
   def show
     @shoe = Shoe.find(params[:id])
     @user = @shoe.user
-    @shoecomment = Shoeomment.new　#追加
+    @shoecomment = Shoecomment.new
     @shoecomments = @shoe.shoecomments.includes(:user)
   end
 

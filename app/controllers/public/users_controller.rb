@@ -2,10 +2,10 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = current_user
-    @outers = Outer.all
-    @inners = Inner.all
-    @bottoms = Bottom.all
-    @shoes = Shoe.all
+    @outers = current_user.outers.all
+    @inners = current_user.inners.all
+    @bottoms = current_user.bottoms.all
+    @shoes = current_user.shoes.all
   end
 
   def edit

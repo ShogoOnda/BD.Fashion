@@ -31,7 +31,7 @@
         <label for="sample">到着は？</label>
       </div>
       <div class="col-2 mt-2">
-        <%= f.select :idx, {"今すぐ": 0, "３時間後": 1, "6時間後": 2},{ include_blank: '選択してください'}, { class: 'form-select form-select-lg mb-3' , required: true } %>
+        <%= f.select :idx, {"今すぐ": 0, "12時間後": 4, "1日後": 8, "2日後": 16},{ include_blank: '選択してください'}, { class: 'form-select form-select-lg mb-3' , required: true } %>
       </div>
       <div class="col-2 mt-1">
         <button type="button" id="btn">決定</button>
@@ -41,23 +41,27 @@
 
 
   <div class="row justify-content-center">
-    <div class="col-1 offset-1 mr-3 mt-1">
-      <div id="wicon"><img id="img",width="80" height="80"></div>
-      <div id="wicon"><img id="img"></div>
+    <div class="col-auto">
+      <div id="icon"><img id="wicon",width="80" height="80"></div>
     </div>
-    <div class="col-5 mb-3 mt-3">
+    <div class="col-auto">
       <span>最高気温 :</span>
       <span id="temp_max"></span>
       <span> ℃</span>
-      <span class="ml-5">最低気温 :</span>
+      <span class=>最低気温 :</span>
       <span id="temp_min"></span>
       <span> ℃</span></br>
       <span>湿度 :</span>
       <span id="humidity"></span>
       <span> %</span>
-      <span class="ml-5">風速 :</span>
+      <span class=>風速 :</span>
       <span id="speed"></span>
       <span> m/s</span></br>
+      <span>不快度指数 :</span>
+      <span id="DI"></span></br>
+      <div class="font-weight-bold">
+      <span id="message"></span>
+      </div>
     </div>
   </div>
   <div class="row my-2 justify-content-center">
@@ -65,49 +69,47 @@
       所持服一覧
     </h3>
   </div>
-    <div class="tab-panel">
-    	<!--タブ-->
-      	<ul class="tab-group">
-      		<li class="tab tab-A is-active">アウター</li>
-      		<li class="tab tab-B">インナー</li>
-      		<li class="tab tab-C">ボトム</li>
-      		<li class="tab tab-C">シューズ</li>
-      	</ul>
-
-    	<!--タブを切り替えて表示するコンテンツ-->
-    		  <div class="panel tab-A is-show">
-  <div class="row my-3">
-    <h4 class="col-5 font-weight-bold">
-                アウター
-              </h4>
-              <div class="col-4 mt-1">
-                <%= form_tag outers_path, method: :get, class: 'boards__searchForm' do %>
-
-                      <%= select_tag :tag_id,
-                                     options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-                                     {
-                                       prompt: 'タグで絞り込み検索',
-                                       onchange: 'submit(this.form);'
-                                     }
-                      %>
-                <% end %>
-              </div>
-            </div>
-            <div class="row">
-              <% @outers.each do |outer| %>
-                <div class="col-3 d-flex flex-column bd-highlight mb-3">
-                  <%= link_to outer_path(outer.id) do %>
-                    <div class="pt-2 text-center">
-                      <%= image_tag outer.outerImage, size: "200x200" %>
-                    </div>
-                  <% end %>
-                  <div class="pt-2 text-center">
-                    <%= outer.name %>
-                  </div>
-                </div>
-              <% end %>
-            </div>
+  <div class="tab-panel">
+    <!--タブ-->
+    <ul class="tab-group">
+      <li class="tab tab-A is-active">アウター</li>
+      <li class="tab tab-B">インナー</li>
+      <li class="tab tab-C">ボトム</li>
+    	<li class="tab tab-C">シューズ</li>
+    </ul>
+  </div>
+  <!--タブを切り替えて表示するコンテンツ-->
+  <div class="panel tab-A is-show">
+    <div class="row my-3">
+      <h4 class="col-5 font-weight-bold">
+        アウター
+      </h4>
+        <div class="col-4 mt-1">
+          <%= form_tag outers_path, method: :get, class: 'boards__searchForm' do %>
+            <%= select_tag :tag_id,options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+              {
+                  prompt: 'タグで絞り込み検索',
+                  onchange: 'submit(this.form);'
+               }
+                                                        %>
+          <% end %>
+        </div>
+      </div>
+    <div class="row">
+      <div class="col-3 d-flex flex-column bd-highlight mb-3">
+        <% @outers.each do |outer| %>
+          <%= link_to outer_path(outer.id) do %>
+          <div class="pt-2 text-center">
+            <%= image_tag outer.outerImage, size: "200x200" %>
           </div>
+          <% end %>
+          <div class="pt-2 text-center">
+            <%= outer.name %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
 
 

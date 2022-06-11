@@ -25,7 +25,7 @@ class Public::InnersController < ApplicationController
   def show
     @inner = Inner.find(params[:id])
     @user = @inner.user
-    @innercomment = Inneromment.new　#追加
+    @innercomment = Innercomment.new
     @innercomments = @inner.innercomments.includes(:user)
   end
 
