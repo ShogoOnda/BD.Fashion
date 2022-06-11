@@ -4,10 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :inners, dependent: :destroy
   has_many :outers, dependent: :destroy
+  has_many :inners, dependent: :destroy
   has_many :bottoms, dependent: :destroy
   has_many :shoes, dependent: :destroy
-  has_many :comments, dependent: :destroy  #追加
+  has_many :outercomments, dependent: :destroy  #追加
+  has_many :innercomments, dependent: :destroy  #追加
+  has_many :bottomcomments, dependent: :destroy  #追加
+  has_many :shoecomments, dependent: :destroy  #追加
 
 end

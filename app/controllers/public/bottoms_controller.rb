@@ -30,8 +30,8 @@ class Public::BottomsController < ApplicationController
 
     @bottom = Bottom.find(params[:id])
     @user = @bottom.user
-    @comment = Comment.new
-    @comments = @bottom.comments.includes(:user)
+    @bottomcomment = Bottomcomment.new
+    @bottomcomments = @bottom.bottomcomments.includes(:user)
   end
 
   def edit

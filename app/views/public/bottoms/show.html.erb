@@ -10,40 +10,53 @@
     </div>
     <div class="col-4 mt-4">
       <ul class="list-unstyled">
-        <li class="my-3">
-          <% @bottom.tags.each do |tag| %>
-              <%= tag.name %>
-          <% end %>
-        </li>
         <li class="my-3 font-weight-bold">品名：<%= @bottom.name %></li>
         <li class="my-3">ブランド：<%= @bottom.brand %></li>
         <li class="my-3">サイズ：<%= @bottom.size %></li>
         <li class="my-3">レビュー：<%= @bottom.review %></li>
+        <li class="my-3">
+          シーズン：
+          <% @bottom.tags.each do |tag| %>
+              <%= tag.name %>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>
-  <div class="row">
+  <div class="row my-3 justify-content-center">
     <% if @bottom.user.id == current_user.id %>
-    <div class="field mx-auto my-5">
+    <div class="field">
       <%= link_to "編集する", edit_bottom_path(@bottom.id), class:"btn btn-success" %>
     </div>
-    <div class="field mx-auto my-5">
+    <div class="field offset-1">
       <%=link_to "削除する", bottom_path(@bottom.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn btn-danger" %>
     </div>
     <% end %>
   </div>
 
+  <div class="row  my-2">
+    <h5 class="col-auto offset-2 font-weight-bold">
+      コメント一覧
+    </h5>
+  </div>
 
-<h3>コメント一覧</h3>
-<% @comments.each do |c| %>
-  <%= c.body %>
-<% end %>
+  <div class="row my-3 justify-content-center">
+    <div class="col-auto">
+      <% if user_signed_in? %>
+        <%= form_with model: [@bottom, @bottomcomment] do |f| %>
+          <%= f.text_area :body, placeholder: "コメントする" %>
+          <%= f.submit "送信" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
-<% if user_signed_in? %>
-  <%= form_with model: [@bottom, @comment] do |f| %>
-    <%= f.text_area :body, placeholder: "コメントする" %>
-    <%= f.submit "SEND" %>
-  <% end %>
-<% end %>
+  <div class="row my-1 justify-content-center">
+    <div class="col-auto">
+      <% @bottomcomments.each do |c| %>
+        <%= @user.name %>さん　:　<%= c.body %></br>
+      <% end %>
+    </div>
+  </div>
 
 </div>

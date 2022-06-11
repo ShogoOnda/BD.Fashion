@@ -10,26 +10,52 @@
     </div>
     <div class="col-4 mt-4">
       <ul class="list-unstyled">
-        <li class="my-3">
-          <% @shoe.tags.each do |tag| %>
-              <%= tag.name %>
-          <% end %>
-        </li>
         <li class="my-3 font-weight-bold">品名：<%= @shoe.name %></li>
         <li class="my-3">ブランド：<%= @shoe.brand %></li>
         <li class="my-3">サイズ：<%= @shoe.size %></li>
         <li class="my-3">レビュー：<%= @shoe.review %></li>
+        <li class="my-3">
+          シーズン：
+          <% @shoe.tags.each do |tag| %>
+              <%= tag.name %>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>
-  <div class="row">
+  <div class="row my-3 justify-content-center">
     <% if @shoe.user.id == current_user.id %>
-    <div class="col-3 offset-4 my-5">
+    <div class="field">
       <%= link_to "編集する", edit_shoe_path(@shoe.id), class:"btn btn-success" %>
     </div>
-    <div class="col-3 my-5">
+    <div class="field offset-1">
       <%=link_to "削除する", shoe_path(@shoe.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn btn-danger" %>
     </div>
     <% end %>
+  </div>
+
+  <div class="row  my-2">
+    <h5 class="col-auto offset-2 font-weight-bold">
+      コメント一覧
+    </h5>
+  </div>
+
+  <div class="row my-3 justify-content-center">
+    <div class="col-auto">
+      <% if user_signed_in? %>
+        <%= form_with model: [@shoe, @shoecomment] do |f| %>
+          <%= f.text_area :body, placeholder: "コメントする" %>
+          <%= f.submit "送信" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row my-1 justify-content-center">
+    <div class="col-auto">
+      <% @bottomcomments.each do |c| %>
+        <%= @user.name %>さん　:　<%= c.body %></br>
+      <% end %>
+    </div>
   </div>
 </div>

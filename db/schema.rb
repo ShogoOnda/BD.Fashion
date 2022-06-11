@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_10_151017) do
+ActiveRecord::Schema.define(version: 2022_06_11_003114) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,6 +52,16 @@ ActiveRecord::Schema.define(version: 2022_06_10_151017) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "bottomcomments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "bottom_id", null: false
+    t.string "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["bottom_id"], name: "index_bottomcomments_on_bottom_id"
+    t.index ["user_id"], name: "index_bottomcomments_on_user_id"
+  end
+
   create_table "bottoms", force: :cascade do |t|
     t.string "name"
     t.string "size"
@@ -89,6 +99,16 @@ ActiveRecord::Schema.define(version: 2022_06_10_151017) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "innercomments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "inner_id", null: false
+    t.string "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["inner_id"], name: "index_innercomments_on_inner_id"
+    t.index ["user_id"], name: "index_innercomments_on_user_id"
+  end
+
   create_table "inners", force: :cascade do |t|
     t.string "name"
     t.string "size"
@@ -99,6 +119,16 @@ ActiveRecord::Schema.define(version: 2022_06_10_151017) do
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "outercomments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "outer_id", null: false
+    t.string "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["outer_id"], name: "index_outercomments_on_outer_id"
+    t.index ["user_id"], name: "index_outercomments_on_user_id"
   end
 
   create_table "outers", force: :cascade do |t|
@@ -132,6 +162,16 @@ ActiveRecord::Schema.define(version: 2022_06_10_151017) do
     t.text "review"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "shoecomments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "shoe_id", null: false
+    t.string "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["shoe_id"], name: "index_shoecomments_on_shoe_id"
+    t.index ["user_id"], name: "index_shoecomments_on_user_id"
   end
 
   create_table "shoes", force: :cascade do |t|
@@ -168,14 +208,22 @@ ActiveRecord::Schema.define(version: 2022_06_10_151017) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "bottomcomments", "bottoms"
+  add_foreign_key "bottomcomments", "users"
   add_foreign_key "comments", "bottoms"
   add_foreign_key "comments", "inners"
   add_foreign_key "comments", "outers"
   add_foreign_key "comments", "shoes"
   add_foreign_key "comments", "users"
+  add_foreign_key "innercomments", "inners"
+  add_foreign_key "innercomments", "users"
+  add_foreign_key "outercomments", "outers"
+  add_foreign_key "outercomments", "users"
   add_foreign_key "post_tags", "bottoms"
   add_foreign_key "post_tags", "inners"
   add_foreign_key "post_tags", "outers"
   add_foreign_key "post_tags", "shoes"
   add_foreign_key "post_tags", "tags"
+  add_foreign_key "shoecomments", "shoes"
+  add_foreign_key "shoecomments", "users"
 end

@@ -2,16 +2,10 @@
 
 one:
   user: one
-  outer: one
   inner: one
-  bottom: one
-  shoe: one
   body: MyString
 
 two:
   user: two
-  outer: two
   inner: two
-  bottom: two
-  shoe: two
   body: MyString

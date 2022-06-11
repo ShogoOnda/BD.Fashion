@@ -13,16 +13,16 @@ Rails.application.routes.draw do
     get "/users/my_page" => "users#show", as: "my_page"
     get "/users/unsubscribe"=>"users#unsubscribe", as: 'unsubscribe'
     resources :outers do
-      resources :comments, only: [:edit, :update, :create, :destroy]
+      resources :outercomments, only: [:edit, :update, :create, :destroy]
     end
     resources :inners do
-      resources :comments, only: [:edit, :update, :create, :destroy]
+      resources :innercomments, only: [:edit, :update, :create, :destroy]
     end
     resources :bottoms do
-      resources :comments, only: [:edit, :update, :create, :destroy]
+      resources :bottomcomments, only: [:edit, :update, :create, :destroy]
     end
     resources :shoes do
-      resources :comments, only: [:edit, :update, :create, :destroy]
+      resources :shoecomments, only: [:edit, :update, :create, :destroy]
     end
     resources :items, only: [:index, :show]
 

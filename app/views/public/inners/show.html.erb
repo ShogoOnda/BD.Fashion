@@ -10,24 +10,52 @@
     </div>
     <div class="col-4 mt-4">
       <ul class="list-unstyled">
-        <li class="my-3">
-          <% @inner.tags.each do |tag| %>
-              <%= tag.name %>
-          <% end %>
-        </li>
         <li class="my-3 font-weight-bold">品名：<%= @inner.name %></li>
         <li class="my-3">ブランド：<%= @inner.brand %></li>
         <li class="my-3">サイズ：<%= @inner.size %></li>
         <li class="my-3">レビュー：<%= @inner.review %></li>
+        <li class="my-3">
+          シーズン：
+          <% @inner.tags.each do |tag| %>
+              <%= tag.name %>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>
-  <div class="row">
-    <div class="field mx-auto my-5">
+  <div class="row my-3 justify-content-center">
+    <% if @inner.user.id == current_user.id %>
+    <div class="field">
       <%= link_to "編集する", edit_inner_path(@inner.id), class:"btn btn-success" %>
     </div>
-    <div class="field mx-auto my-5">
+    <div class="field offset-1">
       <%=link_to "削除する", inner_path(@inner.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn btn-danger" %>
+    </div>
+    <% end %>
+  </div>
+
+  <div class="row  my-2">
+    <h5 class="col-auto offset-2 font-weight-bold">
+      コメント一覧
+    </h5>
+  </div>
+
+  <div class="row my-3 justify-content-center">
+    <div class="col-auto">
+      <% if user_signed_in? %>
+        <%= form_with model: [@inner, @innercomment] do |f| %>
+          <%= f.text_area :body, placeholder: "コメントする" %>
+          <%= f.submit "送信" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row my-1 justify-content-center">
+    <div class="col-auto">
+      <% @innercomments.each do |c| %>
+        <%= @user.name %>さん　:　<%= c.body %></br>
+      <% end %>
     </div>
   </div>
 </div>
