@@ -6,7 +6,7 @@ class Shoe < ApplicationRecord
   has_many :tags, through: :post_tags
   has_many :shoecomments, dependent: :destroy  #追加
 
-  enum status: { public: 0, private: 1 }, _prefix: true
+  enum status: { private: 0, public: 1 }, _prefix: true
 
   def save_tag(sent_tags)
     # タグが存在していれば、タグの名前を配列として全て取得

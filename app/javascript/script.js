@@ -19,6 +19,8 @@ $(function(){
       // 天気アイコン
       $('#wicon').attr("src","http://openweathermap.org/img/w/" + data["list"][parseInt(idx)]["weather"][0]["icon"] + ".png");
       $('#wicon').attr("alt", data["list"][parseInt(idx)]["weather"][0]["main"]);
+      // 気温
+      $('#temp').text(data["list"][parseInt(idx)]["main"]["temp"]);
       // 最高気温
       $('#temp_max').text(data["list"][parseInt(idx)]["main"]["temp_max"]);
       // 最低気温
@@ -27,7 +29,9 @@ $(function(){
       $('#humidity').text(data["list"][parseInt(idx)]["main"]["humidity"]);
       //風速
       $('#speed').text(data["list"][parseInt(idx)]["wind"]["speed"]);
-      //不快度指数
+      // DI（不快指数）計算
+      // T:気温、H:湿度
+      // DI = 0.81T + 0.01H * (0.99T - 14.3) + 46.3
       $('#DI').text( 0.81 * Number(data["list"][parseInt(idx)]["main"]["temp"]) + 0.01 * Number(data["list"][parseInt(idx)]["main"]["humidity"]) * (0.99 * Number(data["list"][parseInt(idx)]["main"]["temp"]) - 14.3) + 46.3 );
 
       if((0.81 * Number(data["list"][parseInt(idx)]["main"]["temp"]) + 0.01 * Number(data["list"][parseInt(idx)]["main"]["humidity"]) * (0.99 * Number(data["list"][parseInt(idx)]["main"]["temp"]) - 14.3) + 46.3) >= 80){

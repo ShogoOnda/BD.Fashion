@@ -20,18 +20,6 @@
     <h4 class="col-5 font-weight-bold">
                 アウター
               </h4>
-              <div class="col-4 mt-1">
-                <%= form_tag outers_path, method: :get, class: 'boards__searchForm' do %>
-
-                      <%= select_tag :tag_id,
-                                     options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-                                     {
-                                       prompt: 'タグで絞り込み検索',
-                                       onchange: 'submit(this.form);'
-                                     }
-                      %>
-                <% end %>
-              </div>
             </div>
             <div class="row">
               <% @outers.each do |outer| %>
@@ -57,18 +45,6 @@
     <h4 class="col-5 font-weight-bold">
       インナー
     </h4>
-    <div class="col-4 mt-1">
-      <%= form_tag inners_path, method: :get, class: 'boards__searchForm' do %>
-
-            <%= select_tag :tag_id,
-                           options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-                           {
-                             prompt: 'タグで絞り込み検索',
-                             onchange: 'submit(this.form);'
-                           }
-            %>
-      <% end %>
-    </div>
   </div>
   <div class="row my-3">
     <% @inners.each do |inner| %>
@@ -93,18 +69,6 @@
     <h4 class="col-5 font-weight-bold">
       ボトム
     </h4>
-    <div class="col-4 mt-1">
-      <%= form_tag bottoms_path, method: :get, class: 'boards__searchForm' do %>
-
-            <%= select_tag :tag_id,
-                           options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-                           {
-                             prompt: 'タグで絞り込み検索',
-                             onchange: 'submit(this.form);'
-                           }
-            %>
-      <% end %>
-    </div>
   </div>
   <div class="row my-3">
     <% @bottoms.each do |bottom| %>
@@ -126,18 +90,6 @@
     <h4 class="col-5 font-weight-bold">
       シューズ
     </h4>
-    <div class="col-4 mt-1">
-      <%= form_tag shoes_path, method: :get, class: 'boards__searchForm' do %>
-
-            <%= select_tag :tag_id,
-                           options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-                           {
-                             prompt: 'タグで絞り込み検索',
-                             onchange: 'submit(this.form);'
-                           }
-            %>
-      <% end %>
-    </div>
   </div>
   <div class="row my-3">
     <% @shoes.each do |shoe| %>

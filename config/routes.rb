@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     get "/about"=>"homes#about", as: 'about'
     get "/users/my_page" => "users#show", as: "my_page"
     get "/users/unsubscribe"=>"users#unsubscribe", as: 'unsubscribe'
+    patch "/users/withdraw" => "users#withdraw", as: 'withdraw'
+    resources :users
     resources :outers do
       resources :outercomments, only: [:edit, :update, :create, :destroy]
     end

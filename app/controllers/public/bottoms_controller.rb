@@ -6,10 +6,9 @@ class Public::BottomsController < ApplicationController
     @bottom = Bottom.new
   end
 
-
   def index
+    @bottoms = params[:tag_id].present? ? current_user.bottoms.joins(:tags).where({ tags: { id: params[:tag_id] } }) : current_user.bottoms.all
     @user = current_user
-    @bottoms = params[:tag_id].present? ? Tag.find(params[:tag_id]).bottoms : current_user.bottoms.all
   end
 
   def create

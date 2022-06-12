@@ -18,6 +18,20 @@
         <% end %>
       </div>
     </div>
+   <div class="row my-3 justify-content-center">
+      <div class="col-auto ml-3">
+        <%= f.label(:public, for: nil, class:'post-status__label') do %>
+            <%= f.radio_button :status, :public %>
+            <%= I18n.t('activerecord.attributes.post.statuses.public', default: '公開') %>
+        <% end %>
+      </div>
+      <div class="col-auto ml-3">
+        <%= f.label(:private, for: nil, class:'post-status__label') do %>
+            <%= f.radio_button :status, :private %>
+            <%= I18n.t('activerecord.attributes.post.statuses.private', default: '非公開') %>
+        <% end %>
+      </div>
+    </div>
     <div class="field row mx-auto">
       <div class="col-md-2 col-form-label">
         <label for="item_name">アウター画像</label>

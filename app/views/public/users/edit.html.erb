@@ -1,39 +1,33 @@
 <div class="container my-5">
   <div class="row">
-    <div class="col-auto offset-2 bg-light">
+    <div class="col-auto bg-light">
       <h4 class="font-weight-bold">
-        アウター編集
+        会員情報編集
       </h4>
     </div>
   </div>
-  <%= form_with model: @outer, url: outer_path(@outer.id), method: :patch do |f| %>
-    <div class="row justify-content-center">
-      <div class="col-4 mt-5 text-center">
-        <% if @outer.outerImage.attached? %>
-          <%= image_tag @outer.outerImage, size: "200x200" %>
-        <% end %>
-      </div>
-    </div>
-  <div class="row justify-content-center">
-    <div class="col-auto mt-5">
-      <table class="table table-borderless">
+  <%= form_with model: @user, url: my_page_path(current_user.id), method: :patch do |f| %>
+    <div class="row my-3 justify-content-center">
+      <table class="col-6 table  table-borderless">
         <tbody>
           <tr>
-            <th>画像</th>
-            <td><%= f.file_field :outerImage, accept: "image/*" %></td>
-          </tr>
-          <tr>
-            <th>品名</th>
+            <th>名前</th>
             <td><%= f.text_field :name %></td>
           </tr>
-        </tdody>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= f.email_field :email %></td>
+          </tr>
+        </tbody>
       </table>
     </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-auto mt-2 text-center">
-      <%= f.submit "変更を保存", class:"btn btn-success" %>
+    <div class="row my-3 justify-content-center">
+      <div class="col-auto text-center">
+        <%= f.submit '編集内容を保存', class:"btn btn-success" %>
+      </div>
+      <div class="col-auto text-center">
+      <%=link_to "退会する", unsubscribe_path(current_user), class:"btn btn-danger" %>
+      </div>
     </div>
-  </div>
   <% end %>
 </div>

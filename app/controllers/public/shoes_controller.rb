@@ -5,7 +5,7 @@ class Public::ShoesController < ApplicationController
   end
 
   def index
-    @shoes = params[:tag_id].present? ? Tag.find(params[:tag_id]).shoes : current_user.shoes.all
+    @shoes = params[:tag_id].present? ? current_user.shoes.joins(:tags).where({ tags: { id: params[:tag_id] } }) : current_user.shoes.all
     @user = current_user
   end
 

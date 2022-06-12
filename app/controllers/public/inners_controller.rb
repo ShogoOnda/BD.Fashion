@@ -5,7 +5,7 @@ class Public::InnersController < ApplicationController
   end
 
   def index
-    @inners = params[:tag_id].present? ? Tag.find(params[:tag_id]).inners : current_user.inners.all
+    @inners = params[:tag_id].present? ? current_user.inners.joins(:tags).where({ tags: { id: params[:tag_id] } }) : current_user.inners.all
     @user = current_user
   end
 

@@ -2,6 +2,7 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :user_state, only: [:create]
 
   # GET /resource/sign_in
   # def new
@@ -29,4 +30,22 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  protected
+  # 退会しているかを判断するメソッド
+  def user_state
+    # [処理内容１] 入力されたemailからアカウントを１件取得
+    @user = User.find_by(email: params[:user][:email])
+    # アカウントを取得できなかった場合、このメソッドを終了する
+    return if !@user
+    # [処理内容2] 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
+    if @user.valid_password?(params[:user][:password])
+    # [処理内容3] 処理１，２がtrueだった場合、そのアカウントのis_deletedカラムに格納されている値を確認し
+    # trueの場合、退会しているためsign_up画面に遷移する
+    # falseの場合、退会してないのでそのままcreateアクションを実行させる
+      if @user.is_deleted == true
+        redirect_to new_user_registration_path
+      end
+    end
+  end
 end

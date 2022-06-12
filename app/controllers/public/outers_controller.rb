@@ -5,7 +5,7 @@ class Public::OutersController < ApplicationController
   end
 
   def index
-    @outers = params[:tag_id].present? ? Tag.find(params[:tag_id]).outers : current_user.outers.all
+    @outers = params[:tag_id].present? ? current_user.outers.joins(:tags).where({ tags: { id: params[:tag_id] } }) : current_user.outers.all
     @user = current_user
   end
 

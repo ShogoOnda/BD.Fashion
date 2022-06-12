@@ -26,6 +26,35 @@
             <th>品名</th>
             <td><%= f.text_field :name %></td>
           </tr>
+          <tr>
+            <th>ブランド</th>
+            <td><%= f.text_field :brand %></td>
+          </tr>
+          <tr>
+            <th>サイズ</th>
+            <td><%= f.text_field :size %></td>
+          </tr>
+          <tr>
+            <th>レビュー</th>
+            <td><%= f.text_area :review %></td>
+          </tr>
+          <tr>
+            <th>シーズン</th>
+            <td>
+              <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+                <%= tag.label do %>
+                  <div class="col-auto">
+                    <%= tag.check_box %>
+                    <%= tag.text %>
+                  </div>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>公開設定</th>
+            <td><%= f.select :status, Inner.statuses_i18n.invert %></td>
+          </tr>
         </tdody>
       </table>
     </div>
