@@ -1,7 +1,7 @@
 <div class="container my-5">
   <div class="row">
     <div class="col-md-auto bg-light">
-      <h4><%= @user.name %>さんの会員詳細</h4>
+      <h4>InnerReview詳細</h4>
     </div>
   </div>
   <div class="row my-3">
@@ -9,37 +9,27 @@
       <tbody>
         <tr>
           <th>会員ID</th>
-          <td><%= @user.id %></td>
+          <td><%= @inner.user_id %></td>
         </tr>
         <tr>
-          <th>氏名</th>
-          <td><%= @user.name %></td>
+          <th>アイテム画像</th>
+          <td><%= image_tag @inner.innerImage, size: "300x300" %></td>
         </tr>
         <tr>
-          <th>メールアドレス</th>
-          <td><%= @user.email %></td>
-        </tr>
-        <tr>
-          <th>会員ステータス</th>
+          <th>レビュー</th>
+          <td><%= @inner.review %></td>
           <td>
-            <% if @user.is_deleted == true %>
-            退会
-            <% else @user.is_deleted == false %>
-            <div class="text-success font-weight-bold">
-              有効
-            </div>
-            <% end %>
+            <% if @inner.review.present? %>
+              <%=link_to "レビューを削除する", @inner.review , method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn btn-danger" %>
+             <% end %>
           </td>
         </tr>
       </tbody>
     </table>
   </div>
   <div class="row my-2">
-    <div class="col-md-6 text-right">
-      <%= link_to "編集する", edit_admin_user_path(@user.id), class:"btn btn-success" %>
-    </div>
-    <div class="col-md-6 text-left">
-      <%= link_to "注文履歴一覧を見る", admin_root_path, class:"btn btn-primary" %>
+    <div class="field mx-auto my-5">
+      <%=link_to "アイテムを削除する", admin_inner_path(@inner.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn btn-danger" %>
     </div>
   </div>
 </div>

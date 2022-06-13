@@ -3,10 +3,10 @@ class Public::ItemsController < ApplicationController
   before_action :set_post, only: [:show]
 
   def index
-    @outers = params[:tag_id].present? ? Tag.find(params[:tag_id]).outers : Outer.where(status: 1)
-    @inners = params[:tag_id].present? ? Tag.find(params[:tag_id]).inners : Inner.where(status: 1)
-    @bottoms = params[:tag_id].present? ? Tag.find(params[:tag_id]).bottoms : Bottom.where(status: 1)
-    @shoes = params[:tag_id].present? ? Tag.find(params[:tag_id]).shoes : Shoe.where(status: 1)
+    @outers = params[:tag_id].present? ? Tag.find(params[:tag_id]).outers.where(status: 1) : Outer.where(status: 1)
+    @inners = params[:tag_id].present? ? Tag.find(params[:tag_id]).inners.where(status: 1) : Inner.where(status: 1)
+    @bottoms = params[:tag_id].present? ? Tag.find(params[:tag_id]).bottoms.where(status: 1) : Bottom.where(status: 1)
+    @shoes = params[:tag_id].present? ? Tag.find(params[:tag_id]).shoes.where(status: 1) : Shoe.where(status: 1)
   end
 
   def show

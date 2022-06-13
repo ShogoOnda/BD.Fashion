@@ -1,5 +1,7 @@
 class Public::ShoesController < ApplicationController
 
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+
   def new
     @shoe = Shoe.new
   end
@@ -13,12 +15,12 @@ class Public::ShoesController < ApplicationController
     @shoe = Shoe.new(shoe_params)
     @shoe.user_id = current_user.id
 
-    if @shoe.save!
-      redirect_to shoe_path(@shoe.id), notice: 'You have created book successfully.'
+    if @shoe.save
+      redirect_to shoe_path(@shoe.id), notice: '新規投稿を行いました。'
     else
       @shoes = Shoe.all
       @user = @shoe.user
-      render :index
+      render :new
     end
   end
 
@@ -55,6 +57,11 @@ class Public::ShoesController < ApplicationController
   end
 
   private
+
+  def set_post
+    @shoe = Shoe.find(params[:id])
+  end
+
   def shoe_params
     params.require(:shoe).permit(:shoeImage, :name, :size, :color, :brand, :review, :status, tag_ids: [])
   end

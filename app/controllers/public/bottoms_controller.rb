@@ -14,9 +14,11 @@ class Public::BottomsController < ApplicationController
   def create
     @bottom = Bottom.new(bottom_params)
     @bottom.user_id = current_user.id
-    if @bottom.save!
+    if @bottom.save
       redirect_to bottom_path(@bottom.id),　notice: '新規投稿を行いました。'
     else
+      @bottoms = Bottom.all
+      @user = @bottom.user
       render :new
     end
   end

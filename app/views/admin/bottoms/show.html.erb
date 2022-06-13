@@ -18,13 +18,18 @@
         <tr>
           <th>レビュー</th>
           <td><%= @bottom.review %></td>
+          <td>
+            <% if @bottom.review.present? %>
+              <%=link_to "レビューを削除する", @bottom.review , method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn btn-danger" %>
+             <% end %>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
   <div class="row my-2">
     <div class="field mx-auto my-5">
-      <%=link_to "削除する", admin_bottom_path(@bottom.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn btn-danger" %>
+      <%=link_to "アイテムを削除する", admin_bottom_path(@bottom.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn btn-danger" %>
     </div>
   </div>
 </div>

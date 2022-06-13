@@ -13,53 +13,11 @@
       <%= link_to "シューズ登録", new_shoe_path, class:"btn btn-success" %>
     </div>
   </div>
-   <div class="row justify-content-center">
-    <div class="col-md-12 mb-4 text-center">
-      <h3 class="font-weight-bold">出かけ先</h3>
-    </div>
-  </div>
-  <%= form_with model: @city do |f| %>
-    <div class="row text-center">
-      <div class="col-2 offset-1 mt-2">
-        <label for="sample">目的地は？</label>
-      </div>
-      <div class="col-2 mt-2">
-        <%= f.select :cityname, City.destinations.keys, { class: 'form-select form-select-lg mb-3' , required: true } %>
-      </div>
-      <p class="mt-2">,</p>
-      <div class="col-2 mt-2">
-        <label for="sample">到着は？</label>
-      </div>
-      <div class="col-2 mt-2">
-        <%= f.select :idx, {"今すぐ": 0, "12時間後": 4, "1日後": 8, "2日後": 16},{ include_blank: '選択してください'}, { class: 'form-select form-select-lg mb-3' , required: true } %>
-      </div>
-      <div class="col-2 mt-1">
-        <button type="button" id="btn">決定</button>
-      </div>
-    </div>
-  <% end %>
-  <div class="row justify-content-center">
-    <div class="col-auto">
-      <div id="icon"><img id="wicon",width="80" height="80"></div>
-    </div>
-    <div class="col-auto">
-      <span class=>気温 :</span>
-      <span id="temp"></span>
-      <span> ℃</span></br>
-      <span>湿度 :</span>
-      <span id="humidity"></span>
-      <span> %</span>
-      <span class=>風速 :</span>
-      <span id="speed"></span>
-      <span> m/s</span></br>
-      <span>不快度指数 :</span>
-      <span id="DI"></span>
-      <p>※不快度指数は60以下が快適、80以上が蒸し暑く不快と判断する指標です。</p></br>
-      <div class="font-weight-bold">
-      <span id="message"></span>
-      </div>
-    </div>
-  </div>
+
+  <!--weatherテンプレート-->
+  <%= render 'public/users/weather' %>
+  <!--weatherテンプレート-->
+
   <div class="row my-2 justify-content-center">
     <h3 class="col-md-12 mt-4 mb-4 font-weight-bold text-center">
       所持服一覧

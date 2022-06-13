@@ -1,5 +1,5 @@
 class Admin::OutersController < ApplicationController
-
+  before_action :authenticate_admin!
   def index
     @outer = Outer.new
     @outers = Outer.all
@@ -8,6 +8,15 @@ class Admin::OutersController < ApplicationController
 
   def show
     @outer = Outer.find(params[:id])
+  end
+
+  def destroy
+    # @outerreview = Outer.find(params[:id]).review
+    @outer = Outer.find(params[:id])
+    @outerreview= Outer.where({ review: { id: params[:id] } })
+    @outerreview.destroy
+    @outer.destroy
+    redirect_to admin_outers_path
   end
 
   private

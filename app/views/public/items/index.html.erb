@@ -5,17 +5,31 @@
     </h4>
   </div>
 
+
+    <div class="col-4 mt-1">
+      <%= form_tag items_path, method: :get, class: 'boards__searchForm' do %>
+            <%= hidden_field_tag :tab, params[:tab] || 0 %>
+            <%= select_tag :tag_id,
+                           options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                           {
+                             prompt: 'タグで絞り込み検索',
+                             onchange: 'submit(this.form);'
+                           }
+            %>
+      <% end %>
+    </div>
+
     <div class="tab-panel">
     	<!--タブ-->
       	<ul class="tab-group">
-      		<li class="tab tab-A is-active">アウター</li>
+      		<li class="tab tab-A">アウター</li>
       		<li class="tab tab-B">インナー</li>
       		<li class="tab tab-C">ボトム</li>
       		<li class="tab tab-C">シューズ</li>
       	</ul>
 
     	<!--タブを切り替えて表示するコンテンツ-->
-  <div class="panel tab-A is-show">
+  <div class="panel tab-A">
   <div class="row my-3">
     <h4 class="col-5 font-weight-bold">
                 アウター

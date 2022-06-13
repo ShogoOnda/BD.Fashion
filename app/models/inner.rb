@@ -4,6 +4,10 @@ class Inner < ApplicationRecord
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
   has_many :innercomments, dependent: :destroy  #追加
+  #バリデーション
+  validates :status, presence: true
+  validates :innerImage, presence: true
+  validates :name, presence: true
 
   enum status: { private: 0, public: 1 }, _prefix: true
 

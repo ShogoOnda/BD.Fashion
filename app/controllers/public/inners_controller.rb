@@ -1,5 +1,7 @@
 class Public::InnersController < ApplicationController
 
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+
   def new
     @inner = Inner.new
   end
@@ -13,12 +15,12 @@ class Public::InnersController < ApplicationController
     @inner = Inner.new(inner_params)
     @inner.user_id = current_user.id
 
-    if @inner.save!
-      redirect_to inner_path(@inner.id), notice: 'You have created book successfully.'
+    if @inner.save
+      redirect_to inner_path(@inner.id), notice: '新規投稿を行いました。'
     else
       @inners = Inner.all
       @user = @inner.user
-      render :index
+      render :new
     end
   end
 
@@ -55,6 +57,11 @@ class Public::InnersController < ApplicationController
   end
 
   private
+
+  def set_post
+    @inner = Inner.find(params[:id])
+  end
+
   def inner_params
     params.require(:inner).permit(:innerImage, :name, :size, :color, :brand, :review, :status, tag_ids: [])
   end

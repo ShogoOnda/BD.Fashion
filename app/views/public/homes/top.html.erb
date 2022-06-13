@@ -1,108 +1,89 @@
 <div class="container my-5">
-  <div class="row justify-content-center">
-    <div class="col-md-12 mb-4 text-center">
-      <h2 class="font-weight-bold">サンプルページ</h2>
-    </div>
-  </div>
-  <div class="row justify-content-center">
-    <div class="col-md-12 mb-4 text-center">
-      <h3 class="font-weight-bold">出かけ先</h3>
-    </div>
-  </div>
-  <%= form_with model: @city do |f| %>
-    <div class="row text-center">
-      <div class="col-2 offset-1 mt-2">
-        <label for="sample">目的地は？</label>
-      </div>
-      <div class="col-2 mt-2">
-        <%= f.select :cityname, City.destinations.keys, { class: 'form-select form-select-lg mb-3' , required: true } %>
-      </div>
-      <p class="mt-2">,</p>
-      <div class="col-2 mt-2">
-        <label for="sample">到着は？</label>
-      </div>
-      <div class="col-2 mt-2">
-        <%= f.select :idx, {"今すぐ": 0, "３時間後": 1, "6時間後": 2},{ include_blank: '選択してください'}, { class: 'form-select form-select-lg mb-3' , required: true } %>
-      </div>
-      <div class="col-2 mt-1">
-        <button type="button" id="btn">決定</button>
-      </div>
-    </div>
-  <% end %>
+  <!--weatherテンプレート-->
+  <%= render 'public/users/weather' %>
+  <!--weatherテンプレート-->
 
-
-  <div class="row justify-content-center">
-    <div class="col-1 offset-1 mr-3 mt-1">
-      <div id="wicon"><img id="img",width="80" height="80"></div>
-      <div id="wicon"><img id="img"></div>
-    </div>
-    <div class="col-5 mb-3 mt-3">
-      <span>最高気温 :</span>
-      <span id="temp_max"></span>
-      <span> ℃</span>
-      <span class="ml-5">最低気温 :</span>
-      <span id="temp_min"></span>
-      <span> ℃</span></br>
-      <span>湿度 :</span>
-      <span id="humidity"></span>
-      <span> %</span>
-      <span class="ml-5">風速 :</span>
-      <span id="speed"></span>
-      <span> m/s</span></br>
-    </div>
-  </div>
-
-  <div class="row my-5 justify-content-center">
+  <div class="row my-2 justify-content-center">
     <h3 class="col-md-12 mt-4 mb-4 font-weight-bold text-center">
-      MyFashion(Sample)
+      所持服一覧(※登録できます。)
     </h3>
   </div>
-
-  <div class="row">
-    <h5 class="col-md-2 offset-md-3">
-      アウター
-    </h5>
-    <div class="col-md-2">
-      <%= image_tag 'outer.jpg', size: "200x200", class:"outer" %>
-    </div>
-    <div class="col-md-4 offset-1 mt-5">
-      <p>品名：ジャケット</p>
-    </div>
-  </div>
-
-  <div class="row my-5">
-    <h5 class="col-md-2 offset-md-3">
-      インナー
-    </h5>
-    <div class="col-md-2">
-      <%= image_tag 'inner.jpg', size: "200x200", class:"inner" %>
-    </div>
-    <div class="col-md-4 offset-1 mt-5">
-      <p>品名：シャツ</p>
-    </div>
-  </div>
-
-  <div class="row my-5">
-    <h5 class="col-md-2 offset-md-3">
-      パンツ
-    </h5>
-    <div class="col-md-2">
-      <%= image_tag 'pants.jpg', size: "200x200" %>
-    </div>
-    <div class="col-md-4 offset-1 mt-5">
-      <p>品名：ジーパン</p>
-    </div>
-  </div>
-
-  <div class="row my-5">
-    <h5 class="col-md-2 offset-md-3">
-      シューズ
-    </h5>
-    <div class="col-md-2">
-      <%= image_tag 'shoes.jpg', size: "200x200" %>
-    </div>
-    <div class="col-md-4 offset-1 mt-5">
-      <p>品名：革靴</p>
+    <div class="tab-panel">
+    	<!--タブ-->
+      	<ul class="tab-group">
+      		<li class="tab tab-A is-active">アウター</li>
+      		<li class="tab tab-B">インナー</li>
+      		<li class="tab tab-C">ボトム</li>
+      		<li class="tab tab-C">シューズ</li>
+      	</ul>
+    	<!--タブを切り替えて表示するコンテンツ-->
+      <div class="panel tab-A is-show">
+        <div class="row my-3">
+          <h4 class="col-5 font-weight-bold">
+            アウター
+          </h4>
+        </div>
+        <div class="row">
+          <div class="col-3 d-flex flex-column bd-highlight mb-3">
+            <div class="pt-2 text-center">
+              <%= image_tag 'outer.jpg', size: "200x200", class:"outer" %>
+            </div>
+            <div class="pt-2 text-center">
+              ジャケット
+            </div>
+          </div>
+        </div>
+      </div>
+    	<div class="panel tab-B">
+        <div class="row my-3">
+          <h4 class="col-5 font-weight-bold">
+            インナー
+          </h4>
+        </div>
+        <div class="row my-3">
+          <div class="col-3 d-flex flex-column bd-highlight mb-3">
+            <div class="pt-2 text-center">
+              <%= image_tag 'inner.jpg', size: "200x200", class:"outer" %>
+            </div>
+            <div class="pt-2 text-center">
+              シャツ
+            </div>
+          </div>
+        </div>
+    	</div>
+    	<div class="panel tab-C">
+        <div class="row my-3">
+          <h4 class="col-5 font-weight-bold">
+            ボトム
+          </h4>
+        </div>
+        <div class="row my-3">
+          <div class="col-auto d-flex flex-column bd-highlight mb-3">
+            <div class="pt-2 text-center">
+              <%= image_tag 'pants.jpg', size: "200x200", class:"outer" %>
+            </div>
+            <div class="pt-2 text-center">
+              パンツ
+            </div>
+          </div>
+        </div>
+    	</div>
+    	<div class="panel tab-D">
+        <div class="row my-3">
+          <h4 class="col-5 font-weight-bold">
+            シューズ
+          </h4>
+        </div>
+      <div class="row my-3">
+        <div class="col-3 d-flex flex-column bd-highlight mb-3">
+          <div class="pt-2 text-center">
+            <%= image_tag 'shoes.jpg', size: "200x200", class:"outer" %>
+          </div>
+          <div class="pt-2 text-center">
+            スニーカー
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

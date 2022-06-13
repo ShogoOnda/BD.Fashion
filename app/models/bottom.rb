@@ -2,8 +2,12 @@ class Bottom < ApplicationRecord
   has_one_attached :bottomImage
   belongs_to :user
   has_many :post_tags, dependent: :destroy
-  has_many :tags, through: :post_tags#, dependent: :destroy
-  has_many :bottomcomments, dependent: :destroy  #追加
+  has_many :tags, through: :post_tags
+  has_many :bottomcomments, dependent: :destroy
+  #バリデーション
+  validates :status, presence: true
+  validates :bottomImage, presence: true
+  validates :name, presence: true
 
   enum status: { private: 0, public: 1 }, _prefix: true
 

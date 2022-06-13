@@ -13,18 +13,18 @@
         <th>レビュー</th>
       </tr>
     </thead>
+    <% @inners.each do |inner| %>
       <tbody>
         <tr>
-        <% @inners.each do |inner| %>
           <td><%= inner.user_id %></td>
           <td>
-            <%= link_to inner_path(inner.id) do %>
+            <%= link_to admin_inner_path(inner.id) do %>
               <%= image_tag inner.innerImage, size: "100x100" %>
             <% end %>
           </td>
           <td><%= inner.review %></td>
-        <% end %>
         </tr>
       </tbody>
+    <% end %>
   </table>
 </div>

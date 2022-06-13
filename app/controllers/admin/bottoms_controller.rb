@@ -1,4 +1,5 @@
 class Admin::BottomsController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @bottom = Bottom.new
     @bottoms = Bottom.all
@@ -7,6 +8,13 @@ class Admin::BottomsController < ApplicationController
 
   def show
     @bottom = Bottom.find(params[:id])
+  end
+
+  def destroy
+    # @bottom = Bottom.find(params[:id])
+    @bottom.review.destroy
+    @bottom.destroy
+    redirect_to admin_bottoms_path
   end
 
   private

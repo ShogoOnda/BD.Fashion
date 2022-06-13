@@ -3,7 +3,11 @@ class Outer < ApplicationRecord
   belongs_to :user
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
-  has_many :outercomments, dependent: :destroy  #追加
+  has_many :outercomments, dependent: :destroy
+  #バリデーション
+  validates :status, presence: true
+  validates :outerImage, presence: true
+  validates :name, presence: true
 
   enum status: { private: 0, public: 1 }, _prefix: true
 

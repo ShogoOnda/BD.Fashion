@@ -1,4 +1,7 @@
 <div class="container my-5">
+
+  <%= render partial: 'layouts/error', locals: {errors: @outer} %>
+
   <div class="row">
     <div class="col-md-auto mb-3 bg-light">
       <h4>アウター新規登録</h4>
@@ -22,13 +25,13 @@
       <div class="col-auto ml-3">
         <%= f.label(:public, for: nil, class:'post-status__label') do %>
             <%= f.radio_button :status, :public %>
-            <%= I18n.t('activerecord.attributes.post.statuses.public', default: '公開') %>
+            <%= I18n.t('enums.post.statuses.public') %>
         <% end %>
       </div>
       <div class="col-auto ml-3">
         <%= f.label(:private, for: nil, class:'post-status__label') do %>
             <%= f.radio_button :status, :private %>
-            <%= I18n.t('activerecord.attributes.post.statuses.private', default: '非公開') %>
+            <%= I18n.t('enums.post.statuses.private') %>
         <% end %>
       </div>
     </div>

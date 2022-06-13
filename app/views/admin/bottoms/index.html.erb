@@ -13,9 +13,9 @@
         <th>レビュー</th>
       </tr>
     </thead>
+    <% @bottoms.each do |bottom| %>
       <tbody>
         <tr>
-        <% @bottoms.each do |bottom| %>
           <td><%= bottom.user_id %></td>
           <td>
             <%= link_to admin_bottom_path(bottom.id) do %>
@@ -23,8 +23,8 @@
             <% end %>
           </td>
           <td><%= bottom.review %></td>
-        <% end %>
         </tr>
       </tbody>
+    <% end %>
   </table>
 </div>

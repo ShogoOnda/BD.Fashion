@@ -13,18 +13,18 @@
         <th>レビュー</th>
       </tr>
     </thead>
+    <% @outers.each do |outer| %>
       <tbody>
         <tr>
-        <% @outers.each do |outer| %>
           <td><%= outer.user_id %></td>
           <td>
-            <%= link_to outer_path(outer.id) do %>
+            <%= link_to admin_outer_path(outer.id) do %>
               <%= image_tag outer.outerImage, size: "100x100" %>
             <% end %>
           </td>
           <td><%= outer.review %></td>
-        <% end %>
         </tr>
       </tbody>
+  <% end %>
   </table>
 </div>

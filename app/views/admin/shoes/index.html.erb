@@ -13,18 +13,18 @@
         <th>レビュー</th>
       </tr>
     </thead>
+    <% @shoes.each do |shoe| %>
       <tbody>
         <tr>
-        <% @shoes.each do |shoe| %>
           <td><%= shoe.user_id %></td>
           <td>
-            <%= link_to shoe_path(shoe.id) do %>
+            <%= link_to admin_shoe_path(shoe.id) do %>
               <%= image_tag shoe.shoeImage, size: "100x100" %>
             <% end %>
           </td>
           <td><%= shoe.review %></td>
-        <% end %>
         </tr>
       </tbody>
+    <% end %>
   </table>
 </div>

@@ -1,5 +1,7 @@
 class Public::OutersController < ApplicationController
 
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+
   def new
     @outer = Outer.new
   end
@@ -12,13 +14,13 @@ class Public::OutersController < ApplicationController
   def create
     @outer = Outer.new(outer_params)
     @outer.user_id = current_user.id
-
-    if @outer.save!
-      redirect_to outer_path(@outer.id), notice: '登録しました'
+    if @outer.save
+      redirect_to outer_path(@outer.id), notice: '新規投稿を行いました。'
     else
+      # @outer = Outer.new
       @outers = Outer.all
       @user = @outer.user
-      render :index
+      render :new
     end
   end
 
@@ -55,6 +57,11 @@ class Public::OutersController < ApplicationController
   end
 
   private
+
+  def set_post
+    @outer = Outer.find(params[:id])
+  end
+
   def outer_params
     params.require(:outer).permit(:outerImage, :name, :size, :color, :brand, :review, :status, tag_ids: [])
   end
