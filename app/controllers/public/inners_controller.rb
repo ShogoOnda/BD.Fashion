@@ -16,7 +16,7 @@ class Public::InnersController < ApplicationController
     @inner.user_id = current_user.id
 
     if @inner.save
-      redirect_to inner_path(@inner.id), notice: '新規投稿を行いました。'
+      redirect_to inner_path(@inner.id), notice: '新規登録を行いました'
     else
       @inners = Inner.all
       @user = @inner.user
@@ -25,6 +25,11 @@ class Public::InnersController < ApplicationController
   end
 
   def show
+
+    if @inner.status_private? && @inner.user != current_user
+      redirect_to my_page_path, notice: 'このページにはアクセスできません'
+    end
+
     @inner = Inner.find(params[:id])
     @user = @inner.user
     @innercomment = Innercomment.new
@@ -44,7 +49,7 @@ class Public::InnersController < ApplicationController
   def update
     @inner = Inner.find(params[:id])
     if @inner.update(inner_params)
-      redirect_to inner_path(@inner.id), notice: 'You have updated book successfully.'
+      redirect_to inner_path(@inner.id), notice: '情報を更新しました'
     else
       render :edit
     end

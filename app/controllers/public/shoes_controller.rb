@@ -16,7 +16,7 @@ class Public::ShoesController < ApplicationController
     @shoe.user_id = current_user.id
 
     if @shoe.save
-      redirect_to shoe_path(@shoe.id), notice: '新規投稿を行いました。'
+      redirect_to shoe_path(@shoe.id), notice: '新規登録を行いました'
     else
       @shoes = Shoe.all
       @user = @shoe.user
@@ -25,6 +25,11 @@ class Public::ShoesController < ApplicationController
   end
 
   def show
+
+    if @shoe.status_private? && @shoe.user != current_user
+      redirect_to my_page_path, notice: 'このページにはアクセスできません'
+    end
+
     @shoe = Shoe.find(params[:id])
     @user = @shoe.user
     @shoecomment = Shoecomment.new
@@ -44,7 +49,7 @@ class Public::ShoesController < ApplicationController
   def update
     @shoe = Shoe.find(params[:id])
     if @shoe.update(shoe_params)
-      redirect_to shoe_path(@shoe.id), notice: 'You have updated book successfully.'
+      redirect_to shoe_path(@shoe.id), notice: '情報を更新しました'
     else
       render :edit
     end

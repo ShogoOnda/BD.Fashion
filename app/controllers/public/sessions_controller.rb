@@ -11,7 +11,7 @@ class Public::SessionsController < Devise::SessionsController
 
 
   def after_sign_in_path_for(resource)
-    root_path
+    my_page_path
   end
 
   # POST /resource/sign_in

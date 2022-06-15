@@ -15,7 +15,7 @@ class Public::BottomsController < ApplicationController
     @bottom = Bottom.new(bottom_params)
     @bottom.user_id = current_user.id
     if @bottom.save
-      redirect_to bottom_path(@bottom.id),　notice: '新規投稿を行いました。'
+      redirect_to bottom_path(@bottom.id), notice: '新規登録を行いました'
     else
       @bottoms = Bottom.all
       @user = @bottom.user
@@ -26,7 +26,7 @@ class Public::BottomsController < ApplicationController
   def show
 
     if @bottom.status_private? && @bottom.user != current_user
-      redirect_to bottoms_path, notice: 'このページにはアクセスできません'
+      redirect_to my_page_path, notice: 'このページにはアクセスできません'
     end
 
     @bottom = Bottom.find(params[:id])
@@ -48,7 +48,7 @@ class Public::BottomsController < ApplicationController
   def update
     @bottom = Bottom.find(params[:id])
     if @bottom.update(bottom_params)
-      redirect_to bottom_path(@bottom.id), notice: 'You have updated book successfully.'
+      redirect_to bottom_path(@bottom.id), notice: '情報を更新しました'
     else
       render :edit
     end

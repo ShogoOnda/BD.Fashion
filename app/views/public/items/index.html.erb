@@ -1,131 +1,119 @@
 <div class="container my-5">
   <div class="row">
-    <h4 class="col-5 font-weight-bold">
+    <h3 class="col-5 font-weight-bold">
       みんなのItem一覧
-    </h4>
+    </h3>
   </div>
-
-
-    <div class="col-4 mt-1">
-      <%= form_tag items_path, method: :get, class: 'boards__searchForm' do %>
-            <%= hidden_field_tag :tab, params[:tab] || 0 %>
-            <%= select_tag :tag_id,
-                           options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
-                           {
-                             prompt: 'タグで絞り込み検索',
-                             onchange: 'submit(this.form);'
-                           }
-            %>
-      <% end %>
-    </div>
-
-    <div class="tab-panel">
-    	<!--タブ-->
-      	<ul class="tab-group">
-      		<li class="tab tab-A">アウター</li>
-      		<li class="tab tab-B">インナー</li>
-      		<li class="tab tab-C">ボトム</li>
-      		<li class="tab tab-C">シューズ</li>
-      	</ul>
-
-    	<!--タブを切り替えて表示するコンテンツ-->
-  <div class="panel tab-A">
-  <div class="row my-3">
-    <h4 class="col-5 font-weight-bold">
-                アウター
-              </h4>
+  <div class="row my-2 justify-content-center">
+    <h3 class="col-md-12 mt-4 mb-4 font-weight-bold text-center">
+      所持服一覧
+    </h3>
+  </div>
+  <div class="col-auto mt-1 text-right">
+        <%= form_tag items_path, method: :get, class: 'boards__searchForm' do %>
+          <%= hidden_field_tag :tab, params[:tab] || 0 %>
+          シーズン絞り込み：<%= select_tag :tag_id,
+                                     options_from_collection_for_select(Tag.all, :id, :name, params[:tag_id]),
+                                     {
+                                       prompt: 'タグで絞り込み検索',
+                                       onchange: 'submit(this.form);'
+                                     }
+          %>
+    <% end %>
+  </div>
+  <div class="tab-panel">
+    <!--タブ-->
+    	<ul class="tab-group">
+    		<li class="tab tab-A">アウター</li>
+    		<li class="tab tab-B">インナー</li>
+      	<li class="tab tab-C">ボトム</li>
+    		<li class="tab tab-C">シューズ</li>
+    	</ul>
+  	<!--タブを切り替えて表示するコンテンツ-->
+    <div class="panel tab-A">
+      <div class="row my-3">
+        <h4 class="col-5 font-weight-bold">
+          アウター
+        </h4>
+      </div>
+      <div class="row">
+        <% @outers.each do |outer| %>
+          <div class="col-3 d-flex flex-column bd-highlight mb-3">
+            <%= link_to outer_path(outer.id) do %>
+              <div class="pt-2 text-center">
+                <%= image_tag outer.outerImage, size: "200x200" %>
+              </div>
+            <% end %>
+            <div class="pt-2 text-center">
+              <%= outer.name %>
             </div>
-            <div class="row">
-              <% @outers.each do |outer| %>
-                <div class="col-3 d-flex flex-column bd-highlight mb-3">
-                  <%= link_to outer_path(outer.id) do %>
-                    <div class="pt-2 text-center">
-                      <%= image_tag outer.outerImage, size: "200x200" %>
-                    </div>
-                  <% end %>
-                  <div class="pt-2 text-center">
-                    <%= outer.name %>
-                  </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="panel tab-B">
+      <div class="row my-3">
+        <h4 class="col-5 font-weight-bold">
+          インナー
+        </h4>
+      </div>
+      <div class="row my-3">
+        <% @inners.each do |inner| %>
+          <div class="col-3 d-flex flex-column bd-highlight mb-3">
+            <%= link_to inner_path(inner.id) do %>
+              <div class="pt-2 text-center">
+                <%= image_tag inner.innerImage, size: "200x200" %>
+              </div>
+            <% end %>
+            <div class="pt-2 text-center">
+              <%= inner.name %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  	<div class="panel tab-C">
+      <div class="row my-3">
+        <h4 class="col-5 font-weight-bold">
+          ボトム
+        </h4>
+      </div>
+      <div class="row my-3">
+        <% @bottoms.each do |bottom| %>
+          <div class="col-auto d-flex flex-column bd-highlight mb-3">
+            <%= link_to bottom_path(bottom.id) do %>
+              <div class="pt-2 text-center">
+                <%= image_tag bottom.bottomImage, size: "200x200" %>
+              </div>
+            <% end %>
+            <div class="pt-2 text-center">
+              <%= bottom.name %>
+            </div>
+          </div>
+        <% end %>
+        </div>
+  		</div>
+  		<div class="panel tab-D">
+        <div class="row my-3">
+          <h4 class="col-5 font-weight-bold">
+            シューズ
+          </h4>
+        </div>
+        <div class="row my-3">
+          <% @shoes.each do |shoe| %>
+            <div class="col-3 d-flex flex-column bd-highlight mb-3">
+              <%= link_to shoe_path(shoe.id) do %>
+                <div class="pt-2 text-center">
+                  <%= image_tag shoe.shoeImage, size: "200x200" %>
                 </div>
-              <% end %>
+                <% end %>
+              <div class="pt-2 text-center">
+                <%= shoe.name %>
+              </div>
             </div>
-          </div>
-
-
-
-    		<div class="panel tab-B">
-
-  <div class="row my-3">
-    <h4 class="col-5 font-weight-bold">
-      インナー
-    </h4>
-  </div>
-  <div class="row my-3">
-    <% @inners.each do |inner| %>
-      <div class="col-3 d-flex flex-column bd-highlight mb-3">
-        <%= link_to inner_path(inner.id) do %>
-          <div class="pt-2 text-center">
-            <%= image_tag inner.innerImage, size: "200x200" %>
-          </div>
-        <% end %>
-        <div class="pt-2 text-center">
-          <%= inner.name %>
+          <% end %>
         </div>
-      </div>
-    <% end %>
+  		</div>
+  	</div>
   </div>
-
-
-
-    		</div>
-    		<div class="panel tab-C">
-  <div class="row my-3">
-    <h4 class="col-5 font-weight-bold">
-      ボトム
-    </h4>
-  </div>
-  <div class="row my-3">
-    <% @bottoms.each do |bottom| %>
-      <div class="col-auto d-flex flex-column bd-highlight mb-3">
-        <%= link_to bottom_path(bottom.id) do %>
-          <div class="pt-2 text-center">
-            <%= image_tag bottom.bottomImage, size: "200x200" %>
-          </div>
-        <% end %>
-        <div class="pt-2 text-center">
-          <%= bottom.name %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-    		</div>
-    		<div class="panel tab-D">
-  <div class="row my-3">
-    <h4 class="col-5 font-weight-bold">
-      シューズ
-    </h4>
-  </div>
-  <div class="row my-3">
-    <% @shoes.each do |shoe| %>
-      <div class="col-3 d-flex flex-column bd-highlight mb-3">
-        <%= link_to shoe_path(shoe.id) do %>
-          <div class="pt-2 text-center">
-            <%= image_tag shoe.shoeImage, size: "200x200" %>
-          </div>
-        <% end %>
-        <div class="pt-2 text-center">
-          <%= shoe.name %>
-        </div>
-      </div>
-    <% end %>
-  </div>
-    		</div>
-    	</div>
-    </div>
-
-  </div>
-
-
-
 </div>
-

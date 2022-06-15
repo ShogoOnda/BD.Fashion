@@ -15,7 +15,7 @@ class Public::OutersController < ApplicationController
     @outer = Outer.new(outer_params)
     @outer.user_id = current_user.id
     if @outer.save
-      redirect_to outer_path(@outer.id), notice: '新規投稿を行いました。'
+      redirect_to outer_path(@outer.id), notice: '新規登録を行いました'
     else
       # @outer = Outer.new
       @outers = Outer.all
@@ -25,6 +25,11 @@ class Public::OutersController < ApplicationController
   end
 
   def show
+
+    if @outer.status_private? && @outer.user != current_user
+      redirect_to my_page_path, notice: 'このページにはアクセスできません'
+    end
+
     @outer = Outer.find(params[:id])
     @user = @outer.user
     @outercomment = Outercomment.new
@@ -44,7 +49,7 @@ class Public::OutersController < ApplicationController
   def update
     @outer = Outer.find(params[:id])
     if @outer.update(outer_params)
-      redirect_to outer_path(@outer.id), notice: 'You have updated book successfully.'
+      redirect_to outer_path(@outer.id), notice: '情報を更新しました'
     else
       render :edit
     end
