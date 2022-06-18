@@ -64,6 +64,9 @@
             </div>
           <% end %>
         </div>
+        <div class="row my-3 justify-content-center">
+          <%= paginate @outers, theme: 'twitter-bootstrap-4' %>
+        </div>
       </div>
     	<div class="panel tab-B">
         <div class="row my-3">
@@ -84,6 +87,9 @@
               </div>
             </div>
           <% end %>
+        </div>
+        <div class="row my-3 justify-content-center">
+          <%= paginate @inners, theme: 'twitter-bootstrap-4' %>
         </div>
     	</div>
     	<div class="panel tab-C">
@@ -106,6 +112,9 @@
             </div>
           <% end %>
           </div>
+          <div class="row my-3 justify-content-center">
+            <%= paginate @bottoms, theme: 'twitter-bootstrap-4' %>
+          </div>
     		</div>
     		<div class="panel tab-D">
           <div class="row my-3">
@@ -127,11 +136,14 @@
               </div>
             <% end %>
           </div>
+          <div class="row my-3 justify-content-center">
+            <%= paginate @shoes, theme: 'twitter-bootstrap-4' %>
+          </div>
     		</div>
     	</div>
     </div>
   </div>
-  <div class="row my-3">
+  <div class="row my-1">
     <div class="col-2 offset-9">
       <%= link_to "ユーザー情報編集", edit_user_path(current_user.id), class: "btn btn-secondary" %>
     </div>
