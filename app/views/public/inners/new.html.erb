@@ -9,8 +9,10 @@
   </div>
   <%= form_with model: @inner, url: inners_path do |f| %>
     <div class="row">
-      <div class="col-auto ml-3 my-3">
+      <div class="col-auto ml-3">
         <span>シーズン</span>
+      </div>
+      <div class="col-8 offset-1">
         <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
           <%= tag.label do %>
             <div class="col-auto">
@@ -21,14 +23,17 @@
         <% end %>
       </div>
     </div>
-   <div class="row my-3 justify-content-center">
-      <div class="col-auto ml-3">
+    <div class="row my-2">
+      <div class="col-auto ml-3 mt-1">
+        <span>公開・非公開</span>
+      </div>
+      <div class="col-auto offset-1 mt-1">
         <%= f.label(:public, for: nil, class:'post-status__label') do %>
             <%= f.radio_button :status, :public %>
             <%= I18n.t('activerecord.attributes.post.statuses.public', default: '公開') %>
         <% end %>
       </div>
-      <div class="col-auto ml-3">
+      <div class="col-auto mt-1">
         <%= f.label(:private, for: nil, class:'post-status__label') do %>
             <%= f.radio_button :status, :private %>
             <%= I18n.t('activerecord.attributes.post.statuses.private', default: '非公開') %>

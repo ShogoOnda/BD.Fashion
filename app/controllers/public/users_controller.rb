@@ -2,10 +2,11 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = current_user
-    @outers = current_user.outers.all
-    @inners = current_user.inners.all
-    @bottoms = current_user.bottoms.all
-    @shoes = current_user.shoes.all
+    @outers = params[:tag_id].present? ? current_user.outers.joins(:tags).where({ tags: { id: params[:tag_id] } }).page(params[:page]) : current_user.outers.page(params[:page])
+    @inners = params[:tag_id].present? ? current_user.inners.joins(:tags).where({ tags: { id: params[:tag_id] } }).page(params[:page]) : current_user.inners.page(params[:page])
+    @bottoms = params[:tag_id].present? ? current_user.bottoms.joins(:tags).where({ tags: { id: params[:tag_id] } }).page(params[:page]) : current_user.bottoms.page(params[:page])
+    @shoes = params[:tag_id].present? ? current_user.shoes.joins(:tags).where({ tags: { id: params[:tag_id] } }).page(params[:page]) : current_user.shoes.page(params[:page])
+
   end
 
   def edit
