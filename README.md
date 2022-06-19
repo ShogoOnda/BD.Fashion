@@ -50,5 +50,4 @@ https://docs.google.com/spreadsheets/d/13cl9gZd6Ztc3pngOSVnWlZl47tmEv1cXINse_IqS
 
 ## 使用素材
 
-a
 使用検討中
