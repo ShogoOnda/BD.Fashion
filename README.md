@@ -31,8 +31,6 @@
 
 外出前の所持している服の組み合わせを考える時間がないとき</br>
 
-コーディネートを鏡の前に立つことなく、客観的に判断したいとき</br>
-
 ## 実装機能リスト
 
 https://docs.google.com/spreadsheets/d/13cl9gZd6Ztc3pngOSVnWlZl47tmEv1cXINse_IqSNLo/edit?usp=sharing
