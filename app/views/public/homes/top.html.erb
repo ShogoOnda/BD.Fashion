@@ -1,4 +1,9 @@
-<div class="container my-5">
+<div class="container my-3">
+  <div class="row">
+    <div class="col-auto offset-9 mb-3">
+      <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post, class:"btn btn-secondary" %>
+    </div>
+  </div>
   <!--weatherテンプレート-->
   <%= render 'layouts/weather' %>
   <!--weatherテンプレート-->

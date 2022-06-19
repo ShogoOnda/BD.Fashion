@@ -14,6 +14,7 @@ class Public::SessionsController < Devise::SessionsController
     my_page_path
   end
 
+
   # POST /resource/sign_in
   # def create
   #   super
