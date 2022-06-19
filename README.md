@@ -47,4 +47,12 @@ https://docs.google.com/spreadsheets/d/13cl9gZd6Ztc3pngOSVnWlZl47tmEv1cXINse_IqS
 
 ## 使用素材
 
+服のシルエットのフリー画像出典元サイト
 https://www.silhouette-ac.com/
+
+## 使用API
+
+OpenWeatherMap
+https://openweathermap.org/
+
+
