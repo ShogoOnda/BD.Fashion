@@ -60,6 +60,7 @@ https://openweathermap.org/
 （例えば、インナーグループを見ている最中に、絞り込み検索を行なっても、インナーが表示されたまま絞り込み検索が適用される。）</br>
 参照：app/javascript/script.js</br></br>
 APIの導入には、配列取得の規則がわからず試行錯誤でどの情報が取得できるのか、調べながら確認しました。</br>
+参照：app/javascript/script.js</br></br>
 
 
 
