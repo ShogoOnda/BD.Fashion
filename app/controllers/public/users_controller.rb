@@ -7,6 +7,7 @@ class Public::UsersController < ApplicationController
     @bottoms = params[:tag_id].present? ? current_user.bottoms.joins(:tags).where({ tags: { id: params[:tag_id] } }).page(params[:page]) : current_user.bottoms.page(params[:page])
     @shoes = params[:tag_id].present? ? current_user.shoes.joins(:tags).where({ tags: { id: params[:tag_id] } }).page(params[:page]) : current_user.shoes.page(params[:page])
 
+
   end
 
   def edit
@@ -28,7 +29,30 @@ class Public::UsersController < ApplicationController
     end
     redirect_to root_path
   end
-  
+
+  # def ajax
+  #   # view_contextでpaginateメソッドを使いパーシャルの中身と同じものを生成
+  #   paginator = view_context.paginate(
+  #     @books,
+  #     remote: true,
+  #     url: books_ajax_url # Kaminariのリンク先を変える
+  #   )
+
+  #   # render_to_stringでパーシャルの中身を生成
+  #   books = render_to_string(
+  #     partial: 'book',
+  #     locals: { books: @books }
+  #   )
+
+  #   #リクエストを確認しajaxだった場合にはjsonで各パーシャルをクライアントへ返す
+  #   if request.xhr?
+  #     render json: {
+  #       paginator: paginator,
+  #       books: books,
+  #       success: true # クライアント(js)側へsuccessを伝えるために付加
+  #     }
+  #   end
+  # end
 
 
   private
