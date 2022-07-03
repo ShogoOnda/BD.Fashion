@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     root :to =>"homes#top"
     get "/about"=>"homes#about", as: 'about'
     post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
-    get "/users/my_page" => "users#show", as: "my_page"
+      get "/users/my_page" => "users#show", as: "my_page"
     get "/users/unsubscribe"=>"users#unsubscribe", as: 'unsubscribe'
     patch "/users/withdraw" => "users#withdraw", as: 'withdraw'
     resources :users
